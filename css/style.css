@@ -15,15 +15,13 @@ root{
 
 }
 
+/* Makes the site scroll smoothly for a better user expirience */ 
 html {
     scroll-behavior: smooth;
 }
 
-body{
-    margin: 0;
-    background-color: rgb(243, 238, 238);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+
+
 
 
 
@@ -31,22 +29,21 @@ body{
 background-color: green;
 height: 80px;
 width:100%;
+margin:0  auto;
 display: flex;
 align-items: center;
 justify-content: center;
-gap: 15px;
+gap: 0.25rem;
+
 position: sticky;
 }
 
 .nav-items a{
-    
-padding: 20px;
-height: 20px;
-width:200px;
-font-weight: bold;
-color:rgb(255, 255, 255);
-text-align: center;
-text-decoration: none;
+        color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 1rem 1rem;
+    border-bottom: 3px solid transparent;
 }
 
 
