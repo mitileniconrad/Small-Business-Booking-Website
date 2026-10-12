@@ -1,28 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap");
 
 
-/* Adding color Variables */ 
+/* Adding color Variables */
 
-root{
---Blue : blue;
---Green : rgb(69, 234, 69);
---Dark-Blue : rgb(24, 24, 76);
---Red : rgb(182, 26, 26);
---Yellow: rgb(243, 255, 19);
---White: white;
+:root {
+    --Blue: blue;
+    --Green: rgb(69, 234, 69);
+    --Dark-Blue: rgb(24, 24, 76);
+    --Red: rgb(182, 26, 26);
+    --Yellow: rgb(243, 255, 19);
+    --White: white;
 
- --radius: 10px;
- --max: 1080px;
+    --radius: 10px;
+    --max: 1080px;
 
+    --font-head: "Bricolage Grotesque", system-ui, sans-serif;
 }
 
-/* Makes the site scroll smoothly for a better user expirience */ 
+/* Makes the site scroll smoothly for a better user experience */
 html {
     scroll-behavior: smooth;
 }
 
 /* Setting a proper structure for the body */
-
 body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -34,21 +34,22 @@ body {
 
 
 /* Nav Items */
+.nav-items {
+    background-color: var(--Dark-Blue);
+    height: 80px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
 
-.nav-items{
-   background-color: green;
-   height: 80px;
-   width:100%;
-   margin:0  auto;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   gap: 0.25rem;
-
-  position: sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.nav-items a{
+.nav-items a {
     color: #fff;
     text-decoration: none;
     font-weight: 500;
@@ -57,10 +58,7 @@ body {
 }
 
 
-
-
-
-/*  Hero Image Setion  */
+/* Hero Image Section */
 .img-search {
     position: relative;
     isolation: isolate;
@@ -75,7 +73,7 @@ body {
     font-size: clamp(2.4rem, 7vw, 4.5rem);
     text-align: center;
 }
- 
+
 .img-search img {
     position: absolute;
     inset: 0;
@@ -84,41 +82,41 @@ body {
     object-fit: cover;
     z-index: -2;
 }
- 
+
 .img-search::before {
     content: "";
     position: absolute;
     inset: 0;
-    /* Dims the hero image and adds contrast with the text and other items  */
+    /* Dims the hero image and adds contrast with the text and other items */
     background: rgba(10, 40, 36, 0.62);
     z-index: -1;
 }
 
 
+/* Search box */
 .search-section {
     display: flex;
     max-width: 620px;
-    margin: -2.25rem auto 0;
+    margin: -28px auto 0;   /* centred, overlaps the hero */
     padding: 0 1.25rem;
     position: relative;
     z-index: 2;
-     background: var(--White)!important;
 }
- 
+
 .search-section input {
     flex: 1;
     min-width: 0;
     height: 56px;
     padding: 0 1.25rem;
- 
-    z-index: 3000!important;
+
+    z-index: 3;
     border: 2px solid var(--White);
     border-right: 0;
     border-radius: var(--radius) 0 0 var(--radius);
-    background: var(--White)!important;
+    background: var(--White);
     box-shadow: 0 6px 20px rgba(22, 34, 43, 0.15);
 }
- 
+
 .search-btn {
     width: 64px;
     height: 56px;
@@ -131,9 +129,7 @@ body {
     cursor: pointer;
     box-shadow: 0 6px 20px rgba(22, 34, 43, 0.15);
 }
- 
+
 .search-btn:hover {
     background: #ffb92a;
 }
-
-
