@@ -1,17 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Public+Sans:wght@400;500;600&display=swap");
 
 
-/* Adding color Variables      */ 
+/* Adding color Variables */ 
 
 root{
 --Blue : blue;
 --Green : rgb(69, 234, 69);
 --Dark-Blue : rgb(24, 24, 76);
 --Red : rgb(182, 26, 26);
---yellow: rgb(243, 255, 19);
+--Yellow: rgb(243, 255, 19);
+--White: white;
 
-
-
+ --radius: 10px;
+ --max: 1080px;
 
 }
 
@@ -20,26 +21,35 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Setting a proper structure for the body */
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--Dark-Blue);
+    background: var(--White);
+}
 
 
-
-
+/* Nav Items */
 
 .nav-items{
-background-color: green;
-height: 80px;
-width:100%;
-margin:0  auto;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 0.25rem;
+   background-color: green;
+   height: 80px;
+   width:100%;
+   margin:0  auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.25rem;
 
-position: sticky;
+  position: sticky;
 }
 
 .nav-items a{
-        color: #fff;
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
     padding: 1rem 1rem;
@@ -47,23 +57,42 @@ position: sticky;
 }
 
 
-.nav-items a:hover {
 
-    background-color: rgb(246, 245, 245);
-    border-radius: 20px;
-    color: black;
-}
 
-.img-search img{
-    height:350px;
-    border-radius: 30px!important;
-    width:350px;
+
+/*  Hero Image Setion  */
+.img-search {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    object-fit: contain;
-    align-self: center;
-
+    min-height: 380px;
+    padding: 2rem 1.25rem 4rem;
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    text-align: center;
 }
-
+ 
+.img-search img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+ 
+.img-search::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Dims the hero image and adds contrast with the text and other items  */
+    background: rgba(10, 40, 36, 0.62);
+    z-index: -1;
+}
 
 
 
