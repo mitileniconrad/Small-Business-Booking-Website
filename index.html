@@ -17,9 +17,10 @@
         </nav>
     </header>
 
-    <main class="outer-body">
-   <section class="main-body">
-    <div class="img-search"><img src="images/homepage-concept-with-search-bar.jpg" alt="Search Img">Book today</div>
+
+<main class="outer-body">
+<section class="main-body">
+<div class="img-search"><img src="images/homepage-concept-with-search-bar.jpg" alt="Search Img">Book today</div>
 <div class="search-section">
 <input type="text" id="search" placeholder="Search books...">
 <button type="submit" class="search-btn" aria-label="Search">
@@ -33,24 +34,25 @@
    </section>
 
         <section class="categories">
-            <h2>Popular Categories</h2>
-            <div class="category-grid">
-        <a href="#" class="category-card">Salons &amp; Beauty</a>
+        <h2>Popular Categories</h2>
+        <div class="category-grid">
+
+            <a href="#" class="category-card">Salons &amp; Beauty</a>
             <a href="#" class="category-card">Restaurants</a>
-              <a href="#" class="category-card">Auto Services</a>
+            <a href="#" class="category-card">Auto Services</a>
+            <a href="#" class="category-card">Home Repairs</a>
+            <a href="#" class="category-card">Health &amp; Wellness</a>
+            <a href="#" class="category-card">Events</a>
 
-                <a href="#" class="category-card">Home Repairs</a>
-
-                <a href="#" class="category-card">Health &amp; Wellness</a>
-                <a href="#" class="category-card">Events</a>
             </div>
         </section>
 
        <section class="steps">
             <h2>How It Works</h2>
             <div class="steps-grid">
+
       <div class="step">
-                    <span class="step-number">1</span>
+     <span class="step-number">1</span>
 
          <h3>Search</h3>
           <p>Find a local business that fits what you need.</p>
@@ -84,33 +86,37 @@
 
         <section id="book" class="book">
             <h2>Make a Booking</h2>
-            <form class="form" onsubmit="return false;">
+              <form class="form" onsubmit="return false;">
+
                 <label for="name">Full name</label>
-                 <input type="text" id="name" placeholder="Your name" required>
-
+                <input type="text" id="name" placeholder="Your name" required>
                 <label for="email">Email</label>
-                  <input type="email" id="email" placeholder="you@example.com" required>
-
-            <label for="date">Date</label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+                <label for="date">Date</label>
                 <input type="date" id="date" required>
-
                 <label for="time">Time</label>
-                 <input type="time" id="time" required>
-
+                <input type="time" id="time" required>
                 <button type="submit" class="btn">Book Now</button>
 
               </form> 
         </section>
+  
+
+        <!---- Businesses container to list different businesses -->
+   <section id="businesses" class="businesses">
+    <h2>Local Businesses</h2>
+    <div class="business-grid" id="business-grid">
+        <p class="business-status">Loading businesses...</p>
+    </div>
+     </section>
+
 
         <section id="add-business" class="add-business">
             <h2>Add Your Business</h2>
             <form class="form" onsubmit="return false;">
-               <label for="biz-name">Business name</label>
-
-                    <input type="text" id="biz-name" placeholder="Business name" required>
-
-                 <label for="biz-category">Category</label>
-
+                <label for="biz-name">Business name</label>
+                <input type="text" id="biz-name" placeholder="Business name" required>
+                <label for="biz-category">Category</label>
                 <select id="biz-category">
 
      <option>Salons &amp; Beauty</option>

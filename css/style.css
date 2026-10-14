@@ -97,7 +97,7 @@ body {
 .search-section {
     display: flex;
     max-width: 620px;
-    margin: -28px auto 0;   /* centred, overlaps the hero */
+    margin: -28px auto 0;   /* centred to overlap the hero */
     padding: 0 1.25rem;
     position: relative;
     z-index: 2;
