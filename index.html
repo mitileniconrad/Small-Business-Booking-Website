@@ -12,21 +12,72 @@
 <body>
   <div class="Page-One">
 
-    <!-- Page 1: Ask for the user's name -->
-    <section class="screen" id="screen-name"   aria-label=" Enter your name">
+  <!-- Page 1: Ask for the user's name -->
+
+<section class="screen" id="screen-name"   aria-label=" Enter your name">
       <form class="name-form" id="name-form" novalidate>
         <h1>What should we call you ? </h1>
+
         <p>Enter your name so we can personalise your bookings.</p>
         <label class="name-field">
+
           <img class="ico" src="" alt= " User Image">
           <input type="text" id="name-input" placeholder="Your name" maxlength="30" autocomplete="given-name" required>
         </label>
         <p class="field-error" id="name-error" role="alert" hidden>Please enter your name to continue.</p>
         <button type="submit" class="btn-primary"> Continue</button>
       </form>
+  </section>
+
+
+    <!-- Welcome Page --> 
+     
+  <section class="screen" id=" screen-welcome" aria-label=" Welcome">
+    <img class="full-img" src="assets/images/welcome.jpg"  alt="Modern lodge at dusk">
+      <div class="welcome-content">
+        <h1>Easily book your hotel with us</h1>
+        <p>Use our app anytime to plan a weekend getaway or other travels.</p>
+        <button class="btn-primary" data-goto="screen-home">Get Started</button>
+      </div>
     </section>
 
-    
+<!----Home page-->
+  
+  <section class="screen" id="screen-home" aria-label="Home">
+     <div class="scroll">
+        <header class="top-bar">
+          <button class="icon-btn" aria-label="Profile"><img class="ico" src="assets/icons/white/user.svg" alt=""></button>
+          <button class="icon-btn" aria-label="Search"><img class="ico" src="assets/icons/white/search.svg" alt=""></button>
+        </header>
+ 
+      <h2 class="greeting">Hey, <span class="user-name"></span>! What are you looking for?</h2>
+ 
+       <label class="search">
+          <img class="ico" src="assets/icons/grey/search.svg" alt="">
+          <input type="search" id="search-input" placeholder="Search businesses">
+        </label>
+ 
+        <div class="chips" id="category-chips" role="tablist" aria-label="Categories"></div>
+ 
+      <div class="section-head">
+          <h3>Popular Businesses</h3>
+        </div>
+ 
+        <p class="status-msg" id="list-status" role="status">Loading businesses...</p>
+        <div class="cards" id="business-list"></div>
+      </div>
+ 
+      <nav class="bottom-nav" aria-label="Main">
+        <button class="nav-btn active" aria-label="Home" data-icon="home" data-goto="screen-home"><img class="ico" src="assets/icons/blue/home.svg" alt=""></button>
+        <button class="nav-btn" aria-label="Favourites" data-icon="heart"><img class="ico" src="assets/icons/grey/heart.svg" alt=""></button>
+        <button class="nav-btn" aria-label="Bookings" data-icon="ticket"><img class="ico" src="assets/icons/grey/ticket.svg" alt=""></button>
+        <button class="nav-btn" aria-label="Saved" data-icon="bookmark"><img class="ico" src="assets/icons/grey/bookmark.svg" alt=""></button>
+        <button class="nav-btn" aria-label="Account" data-icon="user" data-goto="screen-welcome"><img class="ico" src="assets/icons/grey/user.svg" alt=""></button>
+      </nav>
+    </section>
+ 
+
+
 
   <script src="JS/script.js"></script>
 </body>
