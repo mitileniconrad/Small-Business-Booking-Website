@@ -4,20 +4,20 @@
     "name": "Glow Nail Studio",
     "category": "Salons & Beauty",
     "description": "Hair, nails and skincare in a relaxed studio.",
-    "image": "images/homepage-concept-with-search-bar.jpg"
+    "image": "assets/images/homepage-concept-with-search-bar.jpg"
   },
   {
     "id": 2,
     "name": "Quick Fix Garage",
     "category": "Auto Services",
     "description": "Servicing, tyres and general car repairs.",
-    "image": "images/businesses/quick-fix-garage.jpg"
+    "image": "assets/images/businesses/quick-fix-garage.jpg"
   },
   {
     "id": 3,
     "name": "Bella Rossa Cucina",
     "category": "Restaurants",
     "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.",
-    "image": "images/businesses/bella-rossa-cucina.jpg"
+    "image": "assets/images/businesses/bella-rossa-cucina.jpg"
   }
 ]
