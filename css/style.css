@@ -563,9 +563,12 @@ img
      }
 
 .avatars 
+
 {
    display: flex; 
+
   }
+
 .avatars img 
 {
   background: var(--surface-2);
@@ -575,12 +578,15 @@ img
   border: 2px solid var(--bg);
   margin-left: -9px;
   object-fit: cover;
-}
-.muted { 
 
-  font-size: 12px;
-   color: var(--muted);
-    margin-top: -8px;
+}
+
+.muted 
+{ 
+font-size: 12px;
+  color: var(--muted);
+  margin-top: -8px;
+
    }
 
 .detail-body .btn-primary 
@@ -861,11 +867,13 @@ img
   scrollbar-width: none;
 }
 .chips::-webkit-scrollbar 
+
 { 
   display: none; 
 }
 
 .chip {
+
   flex: 0 0 auto;
   padding: 12px 18px;
   white-space: nowrap;
@@ -873,15 +881,22 @@ img
 }
  
 .status-msg 
-{ font-size: 14px;
+{ 
+  font-size: 14px;
    color: var(--muted); 
    margin-bottom: 14px; 
   }
+
 .status-msg[hidden] 
 
-{ display: none; }
+{
+   display: none; }
+
 .status-msg.error 
-{ color: #ff6b6b; }
+
+{
+   color: #ff6b6b; 
+  }
  
 .tag {
 
