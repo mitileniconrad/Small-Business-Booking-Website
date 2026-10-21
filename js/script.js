@@ -6,11 +6,14 @@ const ICON_PATH = "assets/icons/";
  
 // Show exactly one screen; all others are hidden
 function show(id) {
+
   screens.forEach(s => s.classList.toggle("active", s.id === id));
+
 }
 
  
 function toast(message) {
+
   toastEl.textContent = message;
   toastEl.classList.add("show");
   clearTimeout(toast.timer);
@@ -53,6 +56,7 @@ let query = " ";
 
  
 function setStatus(message, isError = false) {
+
   statusEl.textContent = message;
   statusEl.classList.toggle("error", isError);
   statusEl.hidden = !message;
@@ -84,4 +88,69 @@ function createCard(b) {
  
   card.append (img, title, category);
   return card;
+}
+
+
+ //funtion to load all the businesses 
+
+function renderBusinesses() {
+
+  const q =  query.trim().toLowerCase();
+  const matches = businesses.filter(b =>
+    (activeCategory === "All"  || b.category ===  activeCategory) &&
+    (!q || [b.name, b.category, b.description].some(v => v.toLowerCase ().includes(q)))
+  );
+ 
+  listEl.replaceChildren(...matches.map(createCard));
+  setStatus(matches.length ? "" : "No businesses found.");
+
+}
+ 
+function renderChips()  {
+
+    //load the business chips
+    
+   const categories = ["All", ... new Set(businesses.map (b => b.category))];
+
+   chipsEl.replaceChildren (...categories.map(name =>  {
+    
+    const chip =  document.createElement("button");
+    chip.className = "chip" + (name  === activeCategory ?  " active"  :  "");
+    chip.setAttribute ("role" , "tab" );
+
+    chip.textContent = name;
+    chip.addEventListener ("click", () => {
+    activeCategory  =  name;
+    chipsEl.querySelectorAll(".chip").forEach (c  => c.classList.toggle ("active", c === chip));
+    renderBusinesses();
+
+    });
+
+    return chip;
+
+  }));
+
+}
+ //Search input functions
+searchInput.addEventListener("input", e => {  // runs this function on every change to the input
+
+  query = e.target.value;   //save what's currently typed
+  renderBusinesses();  //redraw the list using that query
+
+});
+
+ //load business functions and throw an error upon failed load 
+async function loadBusinesses() {
+
+  try {
+
+    businesses = await getBusinesses();
+    renderChips();
+    renderBusinesses();
+
+  }  catch (err) {
+    console.error(err);
+    setStatus("Could not load businesses. ",  true );
+  }
+
 }
