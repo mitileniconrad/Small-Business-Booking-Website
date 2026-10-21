@@ -146,11 +146,30 @@ async function loadBusinesses() {
 
     businesses = await getBusinesses();
     renderChips();
+
     renderBusinesses();
 
   }  catch (err) {
     console.error(err);
-    setStatus("Could not load businesses. ",  true );
+    setStatus("Could not load businesses.  ",  true );
   }
 
 }
+
+
+
+// Open a business to details page
+const detailImg = document.getElementById("detail-img");
+ 
+function openBusiness(b) {
+
+document.getElementById("detail-name").textContent = b.name;  //Find the element with id "detail-name", set its text
+document.getElementById("detail-category").textContent = b.category;//Puts the category into the detail pages element
+document.getElementById("detail-desc").textContent = b.description;// Puts the business's description text into the detail page's description element
+detailImg.src = b.image;
+detailImg.alt = b.name;
+
+show("screen-detail"); //show the detail page 
+
+}
+ 
