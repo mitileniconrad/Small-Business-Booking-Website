@@ -173,3 +173,88 @@ show("screen-detail"); //show the detail page
 
 }
  
+
+ 
+function businessFromEvent(e) {
+  const card = e.target.closest(".place-card");
+  return card ? businesses.find(b => String(b.id) === card.dataset.id) : null;
+}
+ 
+listEl.addEventListener("click", e => {
+  const b = businessFromEvent(e);
+  if (b) openBusiness(b);
+});
+ 
+listEl.addEventListener("keydown", e => {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  const b = businessFromEvent(e);
+  if (b) {
+    e.preventDefault();
+    openBusiness(b);
+  }
+});
+ 
+// Back, favourite, book
+document.getElementById("back-btn").addEventListener("click", () => show("screen-home"));
+ 
+const fav = document.getElementById("fav-btn");
+const favIcon = document.getElementById("fav-icon");
+fav.addEventListener("click", () => {
+  const on = fav.getAttribute("aria-pressed") === "true";
+  fav.setAttribute("aria-pressed", String(!on));
+  favIcon.src = on ? ICON_PATH + "white/heart.svg" : ICON_PATH + "red/heart.svg";
+});
+ 
+document.getElementById("book-btn").addEventListener("click", () => {
+  const name = document.getElementById("detail-name").textContent;
+  toast("Booking started for " + name);
+  // Next step: save the booking (Firebase now, SQL API later).
+});
+ 
+// ---- User name: ask, store in localStorage, re-ask if nothing is stored ----
+const NAME_KEY = "bookingUserName";
+const nameForm = document.getElementById("name-form");
+const nameInput = document.getElementById("name-input");
+const nameError = document.getElementById("name-error");
+ 
+function getStoredName() {
+  try { return localStorage.getItem(NAME_KEY); } catch { return null; }
+}
+ 
+function storeName(name) {
+  try { localStorage.setItem(NAME_KEY, name); } catch { /* storage blocked */ }
+}
+ 
+function renderName(name) {
+  // textContent (not innerHTML) so typed text can never run as HTML
+  document.querySelectorAll(".user-name").forEach(el => (el.textContent = name));
+}
+ 
+nameForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = nameInput.value.trim();
+  if (!name) {
+    nameError.hidden = false;
+    nameInput.focus();
+    return;
+  }
+  nameError.hidden = true;
+  storeName(name);
+  renderName(name);
+  show("screen-welcome");
+});
+ 
+nameInput.addEventListener("input", () => (nameError.hidden = true));
+ 
+// On every load/refresh: no stored name -> prompt; stored name -> skip the prompt
+const savedName = getStoredName();
+if (savedName) {
+  renderName(savedName);
+  show("screen-welcome");
+} else {
+  show("screen-name");
+  nameInput.focus();
+}
+ 
+loadBusinesses();
+ 
