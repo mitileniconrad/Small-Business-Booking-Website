@@ -1,4 +1,5 @@
-// Business data: embedded so it works without a server (swap for an SQL API later)
+// Business data: embedded so it works without a server (running locally)
+
 const BUSINESS_DATA = [
   { "id": 1, "name": "Glow Nail Studio", "category": "Salons & Beauty", "description": "Hair, nails and skincare in a relaxed studio.", "image": "assets/images/businesses/nail-hygiene-care-flat-lay.jpg" },
   { "id": 2, "name": "Quick Fix Garage", "category": "Auto Services", "description": "Servicing, tyres and general car repairs.", "image": "assets/images/businesses/quick-fix-garage.jpg" },
@@ -14,13 +15,18 @@ const BUSINESS_DATA = [
   { "id": 12, "name": "Tyre Kings Auto Centre", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyre-kings-auto-centre.jpg" }
 ];
 
+// Returns a promise so loadBusinesses can `await` it now 
+function getBusinesses() {
+
+   return Promise.resolve(BUSINESS_DATA);
+   
+}
+
+
 
 
 
 //Getting the classes and loading all the icons
-
-
-
 
 const screens = document.querySelectorAll(".screen");
 const toastEl = document.getElementById("toast");
@@ -173,7 +179,7 @@ async function loadBusinesses() {
 
   }  catch (err) {
     console.error(err);
-    setStatus("Could not load businesses.  ",  true );
+       setStatus("Could not load businesses: " + err.message,  true );
   }
 
 }
