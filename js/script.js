@@ -19,11 +19,12 @@ const BUSINESS_DATA = [
 function getBusinesses() {
 
    return Promise.resolve(BUSINESS_DATA);
-   
+
 }
 
 
-
+const s = document.querySelector(".scroll");
+console.log(getComputedStyle(s).overflowY, getComputedStyle(s).minHeight, s.clientHeight, s.scrollHeight);
 
 
 //Getting the classes and loading all the icons
