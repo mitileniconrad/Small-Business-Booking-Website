@@ -922,3 +922,44 @@ font-size: 12px;
   }
 }
  
+
+
+
+
+/*Business card styles */
+.place-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 10px;
+  overflow: hidden;
+
+  
+  transition: background .15s, transform .15s;
+}
+
+.place-card:hover {
+
+  background: var(--surface-2);
+  transform: translateY(-2px);
+}
+
+.place-img {
+  border-radius: 14px;
+}
+
+.place-card h4 {
+  padding: 0 4px;
+}
+
+/* Category shown as a small pill */
+.place-card p {
+
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #1e87ff;
+  color: var(--accent);
+  font-weight: 600;
+
+}
