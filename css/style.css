@@ -256,13 +256,14 @@ img
  
 /* The businesses scroll up and down inside this area; the bottom nav stays put */
 .scroll { 
-    position: absolute;               /* pinned to the edges of the home screen, so it always has a fixed height to scroll inside */
-    inset: 0;
+    position: relative;               /* fills the space above the nav (flex child), so the list scrolls fully clear of it */
+    flex: 1;
+    min-height: 0;                    /* lets the flex child shrink so overflow-y can actually scroll */
     overflow-y: auto;
     overflow-x: hidden;
     overscroll-behavior: contain;     /* scrolling the list does not scroll the page behind it */
     -webkit-overflow-scrolling: touch;/* smooth momentum scrolling on iPhones */
-    padding: 28px  22px 100px;        /* 100px bottom space so the last card clears the nav */
+    padding: 28px  22px 24px;         /* the nav no longer overlays the list, so only a small gap is needed */
     scrollbar-width: auto;            /* visible scroll bar */
     scrollbar-color: var(--accent) var(--surface);  /* thumb colour, track colour */
  
@@ -419,10 +420,9 @@ img
  
 .bottom-nav {
 
-  position: absolute;
-  left: 14px;
-  right: 14px;
-   bottom: 16px;
+  position: relative;
+  flex-shrink: 0;
+  margin: 0 14px 16px;
   display: flex; 
   justify-content: space-around;
   background: var(--surface);
@@ -682,7 +682,7 @@ font-size: 12px;
  
   .scroll
    { 
-    padding: 40px 40px 110px;
+    padding: 40px 40px 24px;
    }
   .greeting 
 
@@ -719,10 +719,8 @@ font-size: 12px;
 
  
   .bottom-nav {
-    left: 50%; 
-    right: auto;
+    align-self: center;
     width: min(480px, calc(100% - 28px));
-    transform: translateX(-50%);
 
   }
  
@@ -774,7 +772,7 @@ font-size: 12px;
  
   .scroll
    { 
-    padding: 48px 56px 120px; 
+    padding: 48px 56px 24px; 
   }
   .greeting
 
@@ -886,15 +884,9 @@ font-size: 12px;
 /* ---------- Business list, category chips, details text ---------- */
 .chips {
 
-  overflow-x: auto;
-  scrollbar-width: none;
+  flex-wrap: wrap;      /* all categories stay visible instead of being clipped off the edge */
+  overflow: visible;
 }
-.chips::-webkit-scrollbar 
-
-{ 
-  display: none; 
-}
-
 .chip {
 
   flex: 0 0 auto;
@@ -981,8 +973,8 @@ font-size: 12px;
   margin-top: 8px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #1e88ff1f;  /* was #1e87ff: same colour as the text, so the category was invisible */
-  color: var(--accent);
+  background: var(--accent);
+  color: var(--text);
   font-weight: 600;
 
 }

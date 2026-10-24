@@ -3,16 +3,16 @@
 const BUSINESS_DATA = [
   { "id": 1, "name": "Glow Nail Studio", "category": "Salons & Beauty", "description": "Hair, nails and skincare in a relaxed studio.", "image": "assets/images/businesses/nail-hygiene-care-flat-lay.jpg" },
   { "id": 2, "name": "Quick Fix Garage", "category": "Auto Services", "description": "Servicing, tyres and general car repairs.", "image": "assets/images/businesses/service.jpg" },
-  { "id": 3, "name": "Bella Rossa Cucina", "category": "Restaurants", "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.", "image": "assets/images/businesses/restaurant" },
-  { "id": 4, "name": "Iron Pulse Fitness", "category": "Health & Fitness", "description": "Strength training, group classes and personal coaching.", "image": "assets/images/businesses/dumbells.jps" },
+  { "id": 3, "name": "Bella Rossa Cucina", "category": "Restaurants", "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.", "image": "assets/images/businesses/restaurant.jpg" },
+  { "id": 4, "name": "Iron Pulse Fitness", "category": "Health & Fitness", "description": "Strength training, group classes and personal coaching.", "image": "assets/images/businesses/dumbells.jpg" },
   { "id": 5, "name": "Sunrise Dental Care", "category": "Health & Medical", "description": "Friendly family dentistry with check-ups, whitening and braces.", "image": "assets/images/businesses/dentist.jpg" },
-  { "id": 6, "name": "The Daily Grind Café", "category": "Restaurants", "description": "Specialty coffee, fresh pastries and light breakfast and lunch.", "image": "assets/images/businesses/close-up-cup-cappuccino-coffee-chocolate-cake.jpg" },
+  { "id": 6, "name": "The Daily Grind Café", "category": "Restaurants", "description": "Specialty coffee, fresh pastries and light breakfast and lunch.", "image": "assets/images/businesses/coffee.jpg" },
   { "id": 7, "name": "Sharp Cuts Barbershop", "category": "Salons & Beauty", "description": "Classic cuts, fades and beard trims with walk-ins welcome.", "image": "assets/images/businesses/salon.jpg" },
   { "id": 8, "name": "Spark Electrical Services", "category": "Home Services", "description": "Certified electricians for repairs, installations and compliance certificates.", "image": "assets/images/businesses/electrician-working.jpg" },
   { "id": 9, "name": "PawPals Pet Grooming", "category": "Pet Services", "description": "Gentle grooming, baths and nail trims for dogs and cats.", "image": "assets/images/businesses/dog.jpg" },
   { "id": 10, "name": "Bright Minds Tutoring", "category": "Education", "description": "After-school maths, science and English lessons for primary and high school learners.", "image": "assets/images/businesses/tutor.jpg" },
-  { "id": 11, "name": "Green Thumb Landscaping", "category": "Home Services", "description": "Garden design, lawn care and irrigation for homes and small businesses.", "image": "assets/images/businesses/gardener.jpg" },
-  { "id": 12, "name": "Tyre Kings Auto Centre", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyre-kings-auto-centre.jpg" }
+  { "id": 11, "name": "Green Thumb Landscaping", "category": "Home Services", "description": "Garden design, lawn care and irrigation for homes and small businesses.", "image": "assets/images/businesses/garden.jpg" },
+  { "id": 12, "name": "Tyre Kings Auto Centre", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyres.jpg" }
 ];
 
 // Returns a promise so loadBusinesses can `await` it now 
@@ -21,10 +21,6 @@ function getBusinesses() {
    return Promise.resolve(BUSINESS_DATA);
 
 }
-
-
-const s = document.querySelector(".scroll");
-console.log(getComputedStyle(s).overflowY, getComputedStyle(s).minHeight, s.clientHeight, s.scrollHeight);
 
 
 //Getting the classes and loading all the icons
@@ -83,6 +79,9 @@ let businesses = [];
 let activeCategory = "All";
 let query = " ";
 
+//Every card is built ONCE and kept here (id -> card), filtering only shows/hides them
+const cardEls = new Map();
+
  
 function setStatus(message, isError = false) {
 
@@ -93,7 +92,7 @@ function setStatus(message, isError = false) {
 }
 
 
-function createCard(b) {
+function createCard(b, index) {
 
   const card = document.createElement("article");
   card.className =  "place-card";
@@ -106,7 +105,9 @@ function createCard(b) {
   img.className =  "place-img";
   img.src =  b.image; //image source
   img.alt = b.name; //image alt text 
-  img.loading =  "lazy"; //load image slowly (near viewpoint)
+  img.decoding = "async"; //decode the picture off the main thread so the page stays smooth
+  img.loading = index < 6 ? "eager" : "lazy"; //first 6 (visible on load) load straight away, the rest load as you scroll to them
+  if (index < 3) img.fetchPriority = "high"; //top row of pictures is fetched first
 
  
   const title = document.createElement ("h4");//Creates a H4 tag in the memory
@@ -125,13 +126,17 @@ function createCard(b) {
 function renderBusinesses() {
 
   const q =  query.trim().toLowerCase();
-  const matches = businesses.filter(b =>
-    (activeCategory === "All"  || b.category ===  activeCategory) &&
-    (!q || [b.name, b.category, b.description].some(v => v.toLowerCase ().includes(q)))
-  );
+  let shown = 0;
+
+  //show or hide the cards that already exist instead of rebuilding every card and picture
+  businesses.forEach(b => {
+    const match = (activeCategory === "All"  || b.category ===  activeCategory) &&
+      (!q || [b.name, b.category, b.description].some(v => v.toLowerCase ().includes(q)));
+    cardEls.get(b.id).hidden = !match;
+    if (match) shown++;
+  });
  
-  listEl.replaceChildren(...matches.map(createCard));
-  setStatus(matches.length ? "" : "No businesses found.");
+  setStatus(shown ? "" : "No businesses found.");
 
 }
  
@@ -174,6 +179,16 @@ async function loadBusinesses() {
   try {
 
     businesses = await getBusinesses();
+
+    //build every card once and add them to the page in a single step
+    const fragment = document.createDocumentFragment();
+    businesses.forEach((b, i) => {
+      const card = createCard(b, i);
+      cardEls.set(b.id, card);
+      fragment.append(card);
+    });
+    listEl.replaceChildren(fragment);
+
     renderChips();
 
     renderBusinesses();
@@ -306,4 +321,3 @@ if (savedName) {
 }
  
 loadBusinesses();
- 
