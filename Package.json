@@ -1,0 +1,9 @@
+{
+  "name": "small-business-booking-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Small business booking app with a tiny Node server that saves bookings to data/bookings.json",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

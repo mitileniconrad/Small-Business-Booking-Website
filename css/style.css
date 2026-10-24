@@ -619,7 +619,7 @@ font-size: 12px;
 /* Toast */
 .toast {
   position: fixed;
-  bottom: 24px; 
+  bottom: 100px; 
   left: 50%;
 
   transform: translate(-50%, 20px);
@@ -881,7 +881,7 @@ font-size: 12px;
    }
 }
  
-/*  Business list, category chips, details text  */
+/* ---------- Business list, category chips, details text ---------- */
 .chips {
 
   flex-wrap: wrap;      /* all categories stay visible instead of being clipped off the edge */
@@ -977,4 +977,311 @@ font-size: 12px;
   color: var(--text);
   font-weight: 600;
 
+}
+
+
+/* ---------- Page 5: User profile ---------- */
+.profile-back {
+  position: absolute;
+  top: 28px;
+  left: 22px;
+  z-index: 1;
+}
+
+.avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+@media (min-width: 600px) {
+  .profile-back { top: 40px; left: 40px; }
+}
+
+@media (min-width: 900px) {
+  .profile-back { top: 48px; left: 56px; }
+}
+
+
+/* ---------- Tabs: Favourites / Bookings / Saved panel ---------- */
+.home-main {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Covers the home list (not the nav), so the bottom nav stays usable */
+.sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--bg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  padding: 28px 22px 24px;
+  scrollbar-width: auto;
+  scrollbar-color: var(--accent) var(--surface);
+}
+.sheet::-webkit-scrollbar { width: 12px; }
+.sheet::-webkit-scrollbar-track { background: var(--surface); }
+.sheet::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
+
+/* Heart + bookmark sit together on the right of the details photo */
+.hero-right {
+  display: flex;
+  gap: 10px;
+}
+#save-btn[aria-pressed="true"] svg {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+/* Bookings list */
+.booking-list {
+  display: grid;
+  gap: 12px;
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+.booking-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 10px;
+}
+.booking-img {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--surface-2);
+  border-radius: 14px;
+}
+.booking-info {
+  flex: 1;
+  min-width: 0;
+}
+.booking-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.pill {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
+.booking-date {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.booking-actions {
+  flex-basis: 100%;
+  display: flex;
+  gap: 8px;
+}
+.btn-cancel, .btn-reschedule {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background .15s;
+}
+.btn-reschedule:hover {
+  background: var(--accent);
+}
+.btn-cancel:hover {
+  background: #ff6b6b;
+}
+.btn-cancel:disabled, .btn-reschedule:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+@media (min-width: 600px) {
+  .sheet { padding: 40px 40px 24px; }
+}
+
+@media (min-width: 900px) {
+  .sheet { padding: 48px 56px 24px; }
+}
+
+
+/* ---------- Booking modal: month calendar ---------- */
+.modal {
+  position: absolute;      /* covers the phone frame (.Page-One), not the whole browser window */
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: #000000b3;
+}
+.modal[hidden] { display: none; }
+
+.modal-card {
+  width: min(400px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--surface-2);
+  border-radius: 16px;
+  padding: 20px;
+}
+.modal-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+}
+.modal-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.modal-card .field-error {
+  font-size: 13px;
+}
+
+/* Month header: arrows either side of "June 2026" */
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cal-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.cal-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  transition: background .15s, color .15s;
+}
+.cal-nav:hover:not(:disabled) {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.cal-nav:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+/* Seven columns: Sun to Sat */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 6px;
+  justify-items: center;
+}
+.cal-weekdays {
+  margin-bottom: 6px;
+}
+.cal-weekdays span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.cal-day {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background .15s;
+}
+.cal-day:hover:not(:disabled):not(.selected) {
+  background: var(--surface-2);
+}
+.cal-day.selected {
+  background: #e8e8e8;     /* light pill for the chosen day */
+  color: var(--bg);
+  font-weight: 600;
+}
+.cal-day.today::after {    /* small dot under today */
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  margin-left: -1.5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.cal-day.booked {          /* already booked for this business */
+  color: var(--muted);
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+.cal-day.past {
+  opacity: .3;
+  cursor: default;
+}
+
+/* Footer: what is picked, and the buttons */
+.cal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--surface-2);
+}
+.modal-card .cal-summary {
+  flex: 1 1 150px;
+  color: var(--text);
+}
+.cal-actions {
+  display: flex;
+  gap: 8px;
+}
+.cal-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--surface-2);
+  background: var(--bg);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background .15s;
+}
+.cal-btn:hover {
+  background: var(--surface-2);
+}
+.cal-btn-quiet {
+  border-color: transparent;
+  background: none;
+  color: var(--muted);
+}
+.cal-btn-quiet:hover {
+  color: var(--text);
 }
