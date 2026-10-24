@@ -40,6 +40,7 @@
     <!-- Page 3: Home -->
 
     <section class="screen" id="screen-home" aria-label="Home">
+      <div class="home-main">
       <div class="scroll">
         <header class="top-bar">
           <button class="icon-btn" id="profile-btn" aria-label="Profile"><img class="ico" src="assets/icons/white/user.svg" alt=""></button>
@@ -64,12 +65,20 @@
         
       </div>
 
+        <!-- Tab panel: Favourites(  Bookings / Saved businesses open here  )  -->
+        <div class="sheet" id="sheet" role="region" aria-labelledby="sheet-title" hidden>
+          <h2 class="greeting" id="sheet-title"></h2>
+          <p class="status-msg" id="sheet-empty" hidden></p>
+          <div id="sheet-list"></div>
+        </div>
+      </div>
+
       <nav class="bottom-nav" aria-label="Main">
-        <button class="nav-btn active" aria-label="Home" data-icon="home" data-goto="screen-home"><img class="ico" src="assets/icons/blue/home.svg" alt=""></button>
-        <button class="nav-btn" aria-label="Favourites" data-icon="heart"><img class="ico" src="assets/icons/grey/heart.svg" alt=""></button>
-        <button class="nav-btn" aria-label="Bookings" data-icon="ticket"><img class="ico" src="assets/icons/grey/ticket.svg" alt=""></button>
-        <button class="nav-btn" aria-label="Saved" data-icon="bookmark"><img class="ico" src="assets/icons/grey/bookmark.svg" alt=""></button>
-        <button class="nav-btn" aria-label="Account" data-icon="user" data-goto="screen-welcome"><img class="ico" src="assets/icons/grey/user.svg" alt=""></button>
+        <button class="nav-btn active" aria-label="Home" data-icon="home" data-tab="home" data-goto="screen-home"><img class="ico" src="assets/icons/blue/home.svg" alt=""></button>
+        <button class="nav-btn" aria-label="Favourites" data-icon="heart" data-tab="heart"><img class="ico" src="assets/icons/grey/heart.svg" alt=""></button>
+        <button class="nav-btn" aria-label="Bookings" data-icon="ticket" data-tab="ticket"><img class="ico" src="assets/icons/grey/ticket.svg" alt=""></button>
+        <button class="nav-btn" aria-label="Saved" data-icon="bookmark" data-tab="bookmark"><img class="ico" src="assets/icons/grey/bookmark.svg" alt=""></button>
+        <button class="nav-btn" aria-label="Account" data-icon="user" data-tab="user" data-goto="screen-welcome"><img class="ico" src="assets/icons/grey/user.svg" alt=""></button>
       </nav>
     </section>
 
@@ -79,7 +88,10 @@
         <img id="detail-img" alt="">
         <div class="hero-actions">
           <button class="icon-btn" id="back-btn" aria-label="Back"><img class="ico" src="assets/icons/white/chevron-left.svg" alt=""></button>
-          <button class="icon-btn" id="fav-btn" aria-label="Save" aria-pressed="false"><img class="ico" id="fav-icon" src="assets/icons/white/heart.svg" alt=""></button>
+          <div class="hero-right">
+            <button class="icon-btn" id="save-btn" aria-label="Save for later" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg></button>
+            <button class="icon-btn" id="fav-btn" aria-label="Favourite" aria-pressed="false"><img class="ico" id="fav-icon" src="assets/icons/white/heart.svg" alt=""></button>
+          </div>
         </div>
       </div>
 
