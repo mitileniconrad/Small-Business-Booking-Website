@@ -42,7 +42,7 @@
     <section class="screen" id="screen-home" aria-label="Home">
       <div class="scroll">
         <header class="top-bar">
-          <button class="icon-btn" aria-label="Profile"><img class="ico" src="assets/icons/white/user.svg" alt=""></button>
+          <button class="icon-btn" id="profile-btn" aria-label="Profile"><img class="ico" src="assets/icons/white/user.svg" alt=""></button>
           <button class="icon-btn" aria-label="Search"><img class="ico" src="assets/icons/white/search.svg" alt=""></button>
         </header>
 
@@ -94,6 +94,23 @@
 
         <button class="btn-primary" id="book-btn">Book Now</button>
       </div>
+    </section>
+
+    <!-- Page 5: User profile -->
+    <section class="screen" id="screen-profile" aria-label="User profile">
+      <button class="icon-btn profile-back" id="profile-back" aria-label="Back" data-goto="screen-home"><img class="ico" src="assets/icons/white/chevron-left.svg" alt=""></button>
+
+      <form class="name-form" id="profile-form" novalidate>
+        <div class="avatar" id="profile-avatar" aria-hidden="true"></div>
+        <h1>Your profile</h1>
+        <p>Change the name we use to greet you and personalise your bookings.</p>
+        <label class="name-field">
+          <img class="ico" src="assets/icons/grey/user.svg" alt="">
+          <input type="text" id="profile-name-input" placeholder="Your name" maxlength="30" autocomplete="given-name" aria-label="Your name" required>
+        </label>
+        <p class="field-error" id="profile-name-error" role="alert" hidden>Please enter your name to continue.</p>
+        <button type="submit" class="btn-primary">Save changes</button>
+      </form>
     </section>
 
   </div>

@@ -287,6 +287,8 @@ function renderName(name)
 {
   // textContent (not innerHTML) so typed text can never run as HTML
   document.querySelectorAll(".user-name").forEach(el => (el.textContent = name));
+  // profile avatar shows the first letter of the name
+  document.getElementById("profile-avatar").textContent = Array.from(name)[0].toUpperCase();
 }
  
 nameForm.addEventListener("submit", e => {
@@ -306,6 +308,35 @@ nameForm.addEventListener("submit", e => {
  
 nameInput.addEventListener("input", () => (nameError.hidden = true));
  
+// Profile page: opened from the user icon on the home screen, lets the user change their name
+const profileForm = document.getElementById("profile-form");
+const profileInput = document.getElementById("profile-name-input");
+const profileError = document.getElementById("profile-name-error");
+
+document.getElementById("profile-btn").addEventListener("click", () => {
+  profileInput.value = getStoredName() || "";  //start with the current name
+  profileError.hidden = true;
+  show("screen-profile");
+  profileInput.focus();
+});
+
+profileForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = profileInput.value.trim();
+  if (!name) {
+    profileError.hidden = false;
+    profileInput.focus();
+    return;
+  }
+  profileError.hidden = true;
+  storeName(name);
+  renderName(name);
+  toast("Name updated");
+  show("screen-home");
+});
+
+profileInput.addEventListener("input", () => (profileError.hidden = true));
+
 // On every load/refresh: no stored name go straight to prompt
 const savedName = getStoredName();
 if (savedName) {
