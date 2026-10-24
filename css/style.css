@@ -881,7 +881,7 @@ font-size: 12px;
    }
 }
  
-/* ---------- Business list, category chips, details text ---------- */
+/*  Business list, category chips, details text  */
 .chips {
 
   flex-wrap: wrap;      /* all categories stay visible instead of being clipped off the edge */
