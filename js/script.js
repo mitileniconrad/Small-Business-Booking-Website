@@ -320,7 +320,7 @@ const saveBtn = document.getElementById("save-btn");
 function syncDetailButtons() {
   const favOn = readList(FAV_KEY).includes(currentBusiness.id);
   fav.setAttribute("aria-pressed", String(favOn));
-  favIcon.src = ICON_PATH + (favOn ? "red" : "white") + "/heart.svg";
+  favIcon.src = ICON_PATH + (favOn ? "filled-heart.svg" : "white/heart.svg");
   saveBtn.setAttribute("aria-pressed", String(readList(SAVED_KEY).includes(currentBusiness.id)));
 }
 
@@ -330,18 +330,25 @@ document.getElementById("back-btn").addEventListener("click", () => {
 });
 
 fav.addEventListener("click", () => {
+
   if (!currentBusiness) return;
   const on = toggleInList(FAV_KEY, currentBusiness.id);
   syncDetailButtons();
   toast(on ? "Added to favourites" : "Removed from favourites");
+
+
 });
+
 
 saveBtn.addEventListener("click", () => {
   if (!currentBusiness) return;
   const on = toggleInList(SAVED_KEY, currentBusiness.id);
   syncDetailButtons();
+
   toast(on ? "Saved for later" : "Removed from saved");
+
 });
+
 
 // Booking modal: opens the calendar to book a new date, or to move an existing booking
 const modalEl = document.getElementById("booking-modal");
@@ -349,10 +356,13 @@ const bookingForm = document.getElementById("booking-form");
 const modalTitle = document.getElementById("booking-modal-title");
 const calTitle = document.getElementById("cal-title");
 const calDays = document.getElementById("cal-days");
+
 const calPrev = document.getElementById("cal-prev");
 const calNext = document.getElementById("cal-next");
+
 const calSummary = document.getElementById("cal-summary");
 const bookingError = document.getElementById("booking-error");
+
 const confirmBtn = document.getElementById("booking-confirm-btn");
 
 let modalState = null;    //{ business, booking } while the modal is open (booking is null for a new booking)
@@ -373,15 +383,19 @@ function openBookingModal(b, booking = null) {
   bookingError.hidden = true;
 
   renderCalendar();
+
   modalEl.hidden = false;
   const first = calDays.querySelector(".selected") || calDays.querySelector(".today") || calDays.querySelector(".cal-day:not(:disabled)");
   if (first) first.focus();
+
 }
 
 function closeBookingModal() {
+
   modalEl.hidden = true;
   modalState = null;
   if (modalOpener && modalOpener.focus) modalOpener.focus();
+
 }
 
 function showBookingError(message) {
@@ -396,6 +410,7 @@ function longDate(ymd) {
 }
 
 function renderCalendar() {
+
   const { y, m } = calMonth;
   const today = todayYMD();
   const [ty, tm] = today.split("-").map(Number);
@@ -407,10 +422,17 @@ function renderCalendar() {
 
   const cells = [];
   const offset = new Date(y, m, 1).getDay();   //Sunday = 0, so this many empty cells come first
-  for (let i = 0; i < offset; i++) cells.push(document.createElement("span"));
+  for 
+  (let i = 0;
+     i < offset; i++)
+      cells.push(document.createElement("span"));
 
   const daysInMonth = new Date(y, m + 1, 0).getDate();
-  for (let d = 1; d <= daysInMonth; d++) {
+  for 
+  (let d = 1; d 
+    <= daysInMonth; 
+    d++) 
+    {
     const ymd = y + "-" + pad(m + 1) + "-" + pad(d);
     const btn = document.createElement("button");
     btn.type = "button";
@@ -418,23 +440,32 @@ function renderCalendar() {
     btn.textContent = d;
     btn.dataset.date = ymd;
 
+
     let label = formatDate(ymd);
-    if (ymd < today) {
+    if
+     (ymd < today) 
+     {
       btn.disabled = true;
       btn.classList.add("past");
-    } else if (isDateTaken(business.id, ymd, booking ? booking.id : null)) {
+    } else if
+     (isDateTaken (business.id, ymd, booking ? booking.id : null))
+      {
       btn.classList.add("booked");   //struck through; tapping it explains why it can't be picked
       btn.setAttribute("aria-disabled", "true");
       label += ", already booked";
+
     }
+
     if (ymd === today) btn.classList.add("today");
     if (ymd === selectedDate) {
       btn.classList.add("selected");
       btn.setAttribute("aria-pressed", "true");
     }
+
     btn.setAttribute("aria-label", label);
     cells.push(btn);
   }
+
   calDays.replaceChildren(...cells);
 
   calSummary.textContent = selectedDate
@@ -491,8 +522,10 @@ bookingForm.addEventListener("submit", e => {
     }]);
     toast("Booking confirmed");
   }
+  
   closeBookingModal();
   renderSheet();
+
 });
 
 document.getElementById("booking-close-btn").addEventListener("click", closeBookingModal);
@@ -527,36 +560,43 @@ function createBookingRow(booking, b) {
   row.className = "booking-card";
 
   const img = document.createElement("img");
+
   img.className = "booking-img";
   img.src = b.image;
   img.alt = b.name;
 
   const info = document.createElement("div");
+
   info.className = "booking-info";
 
   const title = document.createElement("h4");
   title.textContent = b.name;
 
   const pill = document.createElement("span");
+
   pill.className = "pill";
   pill.textContent = b.category;
 
   const date = document.createElement("p");
+
   date.className = "booking-date";
   date.textContent = "Booked for " + formatDate(booking.date);
 
   info.append(title, pill, date);
 
   const actions = document.createElement("div");
+
   actions.className = "booking-actions";
 
   const reschedule = document.createElement("button");
+
   reschedule.type = "button";
   reschedule.className = "btn-reschedule";
   reschedule.dataset.bookingId = booking.id;
   reschedule.textContent = "Reschedule";
 
   const cancel = document.createElement("button");
+
   cancel.type = "button";
   cancel.className = "btn-cancel";
   cancel.dataset.bookingId = booking.id;
@@ -574,6 +614,7 @@ function renderSheet() {
   }
 
   const cfg = SHEETS[activeTab];
+
   sheetTitle.textContent = cfg.title;
   let emptyMessage = cfg.empty;
 
@@ -583,7 +624,9 @@ function renderSheet() {
     items = getBookings()
       .map(bk => { const b = businesses.find(x => x.id === bk.businessId); return b ? createBookingRow(bk, b) : null; })
       .filter(Boolean);
-  } else {
+
+  } 
+  else {
     sheetList.className = "cards";
     items = readList(cfg.key)
       .map(id => businesses.find(b => b.id === id))
@@ -599,24 +642,30 @@ function renderSheet() {
 
 // Any nav button other than the three tabs (Home, Account) closes the panel
 document.querySelectorAll(".nav-btn").forEach(btn =>
+
   btn.addEventListener("click", () => {
     activeTab = SHEETS[btn.dataset.tab] ? btn.dataset.tab : null;
     renderSheet();
     sheetEl.scrollTop = 0;
+
   })
 );
 
 // Tap a card to open it; Reschedule and Cancel work on a booking
 sheetList.addEventListener("click", e => {
+
   const cancel = e.target.closest(".btn-cancel");
-  if (cancel) {
+  if 
+  (cancel) {
     saveBookings(getBookings().filter(bk => String(bk.id) !== cancel.dataset.bookingId));
     toast("Booking cancelled");
     renderSheet();
     return;
+
   }
 
   const reschedule = e.target.closest(".btn-reschedule");
+
   if (reschedule) {
     const booking = getBookings().find(bk => String(bk.id) === reschedule.dataset.bookingId);
     const b = booking && businesses.find(x => x.id === booking.businessId);
@@ -690,6 +739,7 @@ document.getElementById("profile-btn").addEventListener("click", () => {
   profileError.hidden = true;
   show("screen-profile");
   profileInput.focus();
+
 });
 
 profileForm.addEventListener("submit", e => {
@@ -705,6 +755,7 @@ profileForm.addEventListener("submit", e => {
   renderName(name);
   toast("Name updated");
   show("screen-home");
+
 });
 
 profileInput.addEventListener("input", () => (profileError.hidden = true));
