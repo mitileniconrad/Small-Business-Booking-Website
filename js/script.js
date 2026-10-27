@@ -547,10 +547,11 @@ const sheetEl = document.getElementById("sheet");
 const sheetTitle = document.getElementById("sheet-title");
 const sheetList = document.getElementById("sheet-list");
 const sheetEmpty = document.getElementById("sheet-empty");
+const sheetClear = document.getElementById("sheet-clear");
 
 const SHEETS = {
-  heart: { title: "Favourites", key: FAV_KEY, empty: "No favourites yet. Tap the heart on a business to add it here." },
-  ticket: { title: "Bookings", empty: "No bookings yet. Open a business and tap Book Now." },
+  heart: { title: "Favourites", key: FAV_KEY, empty: "No favourites yet. Tap the heart on a business to add it here.", clearLabel: "Clear favourites", clearToast: "Favourites cleared" },
+  ticket: { title: "Bookings", empty: "No bookings yet. Open a business and tap Book Now.", clearLabel: "Clear bookings", clearToast: "All bookings cleared" },
   bookmark: { title: "Saved", key: SAVED_KEY, empty: "Nothing saved yet. Tap the bookmark on a business to keep it here." }
 };
 let activeTab = null;   //null = panel closed (Home tab)
@@ -607,7 +608,35 @@ function createBookingRow(booking, b) {
   return row;
 }
 
+// Clear button: first tap asks "Tap again to confirm", second tap clears (resets after 3 seconds)
+let clearArmed = false;
+let clearTimer = null;
+
+function resetClear() {
+  clearArmed = false;
+  clearTimeout(clearTimer);
+}
+
+sheetClear.addEventListener("click", () => {
+  const cfg = SHEETS[activeTab];
+  if (!cfg || !cfg.clearLabel) return;
+
+  if (!clearArmed) {
+    clearArmed = true;
+    sheetClear.textContent = "Tap again to confirm";
+    sheetClear.classList.add("armed");
+    clearTimer = setTimeout(renderSheet, 3000);   //nobody confirmed, so put the button back
+    return;
+  }
+
+  writeList(cfg.key || BOOKINGS_KEY, []);   //bookings have no key on the config, so they use BOOKINGS_KEY
+  toast(cfg.clearToast);
+  renderSheet();
+});
+
 function renderSheet() {
+  resetClear();
+
   if (!activeTab) {
     sheetEl.hidden = true;
     return;
@@ -637,6 +666,11 @@ function renderSheet() {
   sheetList.replaceChildren(...items);
   sheetEmpty.textContent = emptyMessage;
   sheetEmpty.hidden = items.length > 0;
+
+  sheetClear.hidden = !cfg.clearLabel || items.length === 0;   //only on Favourites and Bookings, and only when there is something to clear
+  sheetClear.textContent = cfg.clearLabel || "";
+  sheetClear.classList.remove("armed");
+
   sheetEl.hidden = false;
 }
 

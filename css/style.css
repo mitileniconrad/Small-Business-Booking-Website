@@ -1143,6 +1143,27 @@ font-size: 12px;
 
 }
 
+/* Clear all button (Bookings and Favourites panels) */
+.btn-clear {
+
+  display: block;
+  margin: -6px 0 18px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background .15s;
+
+}
+.btn-clear[hidden] { display: none; }
+.btn-clear:hover,
+.btn-clear.armed {
+
+  background: #ff6b6b;
+
+}
+
 @media (min-width: 600px) {
 
   .sheet { padding: 40px 40px 24px; }
