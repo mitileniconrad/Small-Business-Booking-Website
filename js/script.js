@@ -1,18 +1,18 @@
 // Business data: embedded so it works without a server (running locally)
 
 const BUSINESS_DATA = [
-  { "id": 1, "name": "Glow Nail Studio", "category": "Salons & Beauty", "description": "Hair, nails and skincare in a relaxed studio.", "image": "assets/images/businesses/nail-hygiene-care-flat-lay.jpg" },
-  { "id": 2, "name": "Quick Fix Garage", "category": "Auto Services", "description": "Servicing, tyres and general car repairs.", "image": "assets/images/businesses/service.jpg" },
-  { "id": 3, "name": "Bella Rossa Cucina", "category": "Restaurants", "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.", "image": "assets/images/businesses/restaurant.jpg" },
-  { "id": 4, "name": "Iron Pulse Fitness", "category": "Health & Fitness", "description": "Strength training, group classes and personal coaching.", "image": "assets/images/businesses/dumbells.jpg" },
-  { "id": 5, "name": "Sunrise Dental Care", "category": "Health & Medical", "description": "Friendly family dentistry with check-ups, whitening and braces.", "image": "assets/images/businesses/dentist.jpg" },
-  { "id": 6, "name": "The Daily Grind Café", "category": "Restaurants", "description": "Specialty coffee, fresh pastries and light breakfast and lunch.", "image": "assets/images/businesses/coffee.jpg" },
-  { "id": 7, "name": "Sharp Cuts Barbershop", "category": "Salons & Beauty", "description": "Classic cuts, fades and beard trims with walk-ins welcome.", "image": "assets/images/businesses/salon.jpg" },
-  { "id": 8, "name": "Spark Electrical Services", "category": "Home Services", "description": "Certified electricians for repairs, installations and compliance certificates.", "image": "assets/images/businesses/electrician-working.jpg" },
-  { "id": 9, "name": "PawPals Pet Grooming", "category": "Pet Services", "description": "Gentle grooming, baths and nail trims for dogs and cats.", "image": "assets/images/businesses/dog.jpg" },
-  { "id": 10, "name": "Bright Minds Tutoring", "category": "Education", "description": "After-school maths, science and English lessons for primary and high school learners.", "image": "assets/images/businesses/tutor.jpg" },
-  { "id": 11, "name": "Green Thumb Landscaping", "category": "Home Services", "description": "Garden design, lawn care and irrigation for homes and small businesses.", "image": "assets/images/businesses/garden.jpg" },
-  { "id": 12, "name": "Tyre Kings Auto Centre", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyres.jpg" }
+  { "id": 1, "name": "Glow Nail Studio", "email": "info@glownailstudio.example", "category": "Salons & Beauty", "description": "Hair, nails and skincare in a relaxed studio.", "image": "assets/images/businesses/nail-hygiene-care-flat-lay.jpg" },
+  { "id": 2, "name": "Quick Fix Garage", "email": "info@quickfixgarage.example", "category": "Auto Services", "description": "Servicing, tyres and general car repairs.", "image": "assets/images/businesses/service.jpg" },
+  { "id": 3, "name": "Bella Rossa Cucina", "email": "info@bellarossacucina.example", "category": "Restaurants", "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.", "image": "assets/images/businesses/restaurant.jpg" },
+  { "id": 4, "name": "Iron Pulse Fitness", "email": "info@ironpulsefitness.example", "category": "Health & Fitness", "description": "Strength training, group classes and personal coaching.", "image": "assets/images/businesses/dumbells.jpg" },
+  { "id": 5, "name": "Sunrise Dental Care", "email": "info@sunrisedentalcare.example", "category": "Health & Medical", "description": "Friendly family dentistry with check-ups, whitening and braces.", "image": "assets/images/businesses/dentist.jpg" },
+  { "id": 6, "name": "The Daily Grind Café", "email": "info@thedailygrindcaf.example", "category": "Restaurants", "description": "Specialty coffee, fresh pastries and light breakfast and lunch.", "image": "assets/images/businesses/coffee.jpg" },
+  { "id": 7, "name": "Sharp Cuts Barbershop", "email": "info@sharpcutsbarbershop.example", "category": "Salons & Beauty", "description": "Classic cuts, fades and beard trims with walk-ins welcome.", "image": "assets/images/businesses/salon.jpg" },
+  { "id": 8, "name": "Spark Electrical Services", "email": "info@sparkelectricalservices.example", "category": "Home Services", "description": "Certified electricians for repairs, installations and compliance certificates.", "image": "assets/images/businesses/electrician-working.jpg" },
+  { "id": 9, "name": "PawPals Pet Grooming", "email": "info@pawpalspetgrooming.example", "category": "Pet Services", "description": "Gentle grooming, baths and nail trims for dogs and cats.", "image": "assets/images/businesses/dog.jpg" },
+  { "id": 10, "name": "Bright Minds Tutoring", "email": "info@brightmindstutoring.example", "category": "Education", "description": "After-school maths, science and English lessons for primary and high school learners.", "image": "assets/images/businesses/tutor.jpg" },
+  { "id": 11, "name": "Green Thumb Landscaping", "email": "info@greenthumblandscaping.example", "category": "Home Services", "description": "Garden design, lawn care and irrigation for homes and small businesses.", "image": "assets/images/businesses/garden.jpg" },
+  { "id": 12, "name": "Tyre Kings Auto Centre", "email": "info@tyrekingsautocentre.example", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyres.jpg" }
 ];
 
 // Returns a promise so loadBusinesses can `await` it now 
@@ -215,6 +215,7 @@ detailImg.alt = b.name;
 
 currentBusiness = b;
 syncDetailButtons();  //reflect whether this business is already a favourite / saved
+syncEmailButton(b);   //point the email button at this business
 
 show("screen-detail"); //show the detail page 
 
@@ -222,6 +223,51 @@ show("screen-detail"); //show the detail page
  
 
  
+// Email (DEMO ONLY): the compose box and Send button never contact anything, they just show a toast
+const emailBtn = document.getElementById("email-btn");
+const emailModal = document.getElementById("email-modal");
+const emailForm = document.getElementById("email-form");
+const emailTo = document.getElementById("email-to");
+const emailBody = document.getElementById("email-body");
+const emailError = document.getElementById("email-error");
+
+function syncEmailButton(b) {
+  emailBtn.hidden = !b.email;
+}
+
+function openEmailModal(b) {
+  const name = getStoredName() || "";
+  emailTo.textContent = "To: " + b.email;
+  emailBody.value = "Hi " + b.name + ",\n\nI found you on Open Book and would like to ask about your services.\n\nKind regards,\n" + name;
+  emailError.hidden = true;
+  emailModal.hidden = false;
+  emailBody.focus();
+}
+
+function closeEmailModal() {
+  emailModal.hidden = true;
+  emailBtn.focus();
+}
+
+emailBtn.addEventListener("click", () => {
+  if (currentBusiness && currentBusiness.email) openEmailModal(currentBusiness);
+});
+
+emailForm.addEventListener("submit", e => {
+  e.preventDefault();
+  if (!emailBody.value.trim()) {
+    emailError.hidden = false;
+    return;
+  }
+  //demo: no request is made and no email leaves the browser
+  toast("Email sent to " + currentBusiness.email);
+  emailModal.hidden = true;
+});
+
+document.getElementById("email-close-btn").addEventListener("click", closeEmailModal);
+emailModal.addEventListener("click", e => { if (e.target === emailModal) closeEmailModal(); });
+emailBody.addEventListener("input", () => (emailError.hidden = true));
+
 function businessFromEvent(e) {
   const card = e.target.closest(".place-card");
   return card ? businesses.find(b => String(b.id) === card.dataset.id) : null;
@@ -364,6 +410,8 @@ const calSummary = document.getElementById("cal-summary");
 const bookingError = document.getElementById("booking-error");
 
 const confirmBtn = document.getElementById("booking-confirm-btn");
+const bookingEmailRow = document.getElementById("booking-email-row");
+const bookingEmailCheck = document.getElementById("booking-email-check");
 
 let modalState = null;    //{ business, booking } while the modal is open (booking is null for a new booking)
 let modalOpener = null;   //the button that opened it, so focus can go back there
@@ -379,7 +427,9 @@ function openBookingModal(b, booking = null) {
   calMonth = { y, m: m - 1 };   //start on the booking's month, or this month
 
   modalTitle.textContent = booking ? "Reschedule booking" : "Book " + b.name;
-  confirmBtn.textContent = booking ? "Save date" : "Confirm";
+  confirmBtn.textContent = booking ? "Save date" : "Send";
+  bookingEmailCheck.checked = false;
+  bookingEmailRow.hidden = !!booking || !b.email;   //email option only when making a new booking
   bookingError.hidden = true;
 
   renderCalendar();
@@ -520,7 +570,8 @@ bookingForm.addEventListener("submit", e => {
       date,
       createdAt: new Date().toISOString()
     }]);
-    toast("Booking confirmed");
+    //demo: the email option only changes the message, nothing is actually emailed
+    toast(bookingEmailCheck.checked ? "Booking sent. Email sent to " + business.email : "Booking sent");
   }
   
   closeBookingModal();
@@ -552,7 +603,7 @@ const sheetClear = document.getElementById("sheet-clear");
 const SHEETS = {
   heart: { title: "Favourites", key: FAV_KEY, empty: "No favourites yet. Tap the heart on a business to add it here.", clearLabel: "Clear favourites", clearToast: "Favourites cleared" },
   ticket: { title: "Bookings", empty: "No bookings yet. Open a business and tap Book Now.", clearLabel: "Clear bookings", clearToast: "All bookings cleared" },
-  bookmark: { title: "Saved", key: SAVED_KEY, empty: "Nothing saved yet. Tap the bookmark on a business to keep it here." }
+  bookmark: { title: "Saved", key: SAVED_KEY, empty: "Nothing saved yet. Tap the bookmark on a business to keep it here.", clearLabel: "Clear saved", clearToast: "Saved list cleared" }
 };
 let activeTab = null;   //null = panel closed (Home tab)
 

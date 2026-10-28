@@ -1143,6 +1143,57 @@ font-size: 12px;
 
 }
 
+/* Email button on the details page */
+.btn-secondary {
+
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: background .15s;
+
+}
+.btn-secondary:hover { background: var(--accent); }
+.btn-secondary[hidden] { display: none; }
+
+@media (min-width: 600px) {
+  .detail-body .btn-secondary { max-width: 420px; }
+}
+@media (min-width: 900px) {
+  .detail-body .btn-secondary { max-width: 360px; }
+}
+
+/* Email option in the booking modal + email compose box */
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.check-row[hidden] { display: none; }
+.check-row input { width: 18px; height: 18px; accent-color: var(--accent); }
+
+.email-body {
+  width: 100%;
+  resize: vertical;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--surface-2);
+  border-radius: 10px;
+  padding: 12px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+#email-modal .cal-actions { justify-content: flex-end; }
+
 /* Clear all button (Bookings and Favourites panels) */
 .btn-clear {
 

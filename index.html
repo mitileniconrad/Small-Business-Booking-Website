@@ -106,6 +106,7 @@
         <p class="detail-desc" id="detail-desc"></p>
 
         <button class="btn-primary" id="book-btn">Book Now</button>
+        <button type="button" class="btn-secondary" id="email-btn">Email this business</button>
       </div>
     </section>
 
@@ -145,12 +146,32 @@
 
         <p class="field-error" id="booking-error" role="alert" hidden></p>
 
+        <label class="check-row" id="booking-email-row">
+          <input type="checkbox" id="booking-email-check">
+          <span>Also email the business about this booking</span>
+        </label>
+
         <div class="cal-footer">
           <p class="cal-summary" id="cal-summary"></p>
           <div class="cal-actions">
             <button type="button" class="cal-btn cal-btn-quiet" id="booking-close-btn">Close</button>
             <button type="submit" class="cal-btn" id="booking-confirm-btn">Confirm</button>
           </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Email modal (demo: Nothing is sent) -->
+    <div class="modal" id="email-modal" role="dialog" aria-modal="true" aria-labelledby="email-modal-title" hidden>
+      <form class="modal-card" id="email-form" novalidate>
+        <h3 id="email-modal-title">Email business</h3>
+        <p id="email-to"></p>
+        
+        <textarea id="email-body" class="email-body" rows="7" aria-label="Message"></textarea>
+        <p class="field-error" id="email-error" role="alert" hidden>Please type a message first.</p>
+        <div class="cal-actions">
+          <button type="button" class="cal-btn cal-btn-quiet" id="email-close-btn">Close</button>
+          <button type="submit" class="cal-btn">Send</button>
         </div>
       </form>
     </div>
