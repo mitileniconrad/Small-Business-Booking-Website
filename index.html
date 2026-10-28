@@ -105,6 +105,9 @@
         <h3>About</h3>
         <p class="detail-desc" id="detail-desc"></p>
 
+        <h3>Opening hours</h3>
+        <p class="detail-desc" id="detail-hours"></p>
+
         <button class="btn-primary" id="book-btn">Book Now</button>
         <button type="button" class="btn-secondary" id="email-btn">Email this business</button>
       </div>
@@ -161,12 +164,11 @@
       </form>
     </div>
 
-    <!-- Email modal (demo: Nothing is sent) -->
+    <!-- Email modal (demo: nothing is actually sent) -->
     <div class="modal" id="email-modal" role="dialog" aria-modal="true" aria-labelledby="email-modal-title" hidden>
       <form class="modal-card" id="email-form" novalidate>
         <h3 id="email-modal-title">Email business</h3>
         <p id="email-to"></p>
-        
         <textarea id="email-body" class="email-body" rows="7" aria-label="Message"></textarea>
         <p class="field-error" id="email-error" role="alert" hidden>Please type a message first.</p>
         <div class="cal-actions">

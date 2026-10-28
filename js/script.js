@@ -1,18 +1,18 @@
 // Business data: embedded so it works without a server (running locally)
 
 const BUSINESS_DATA = [
-  { "id": 1, "name": "Glow Nail Studio", "email": "info@glownailstudio.example", "category": "Salons & Beauty", "description": "Hair, nails and skincare in a relaxed studio.", "image": "assets/images/businesses/nail-hygiene-care-flat-lay.jpg" },
-  { "id": 2, "name": "Quick Fix Garage", "email": "info@quickfixgarage.example", "category": "Auto Services", "description": "Servicing, tyres and general car repairs.", "image": "assets/images/businesses/service.jpg" },
-  { "id": 3, "name": "Bella Rossa Cucina", "email": "info@bellarossacucina.example", "category": "Restaurants", "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.", "image": "assets/images/businesses/restaurant.jpg" },
-  { "id": 4, "name": "Iron Pulse Fitness", "email": "info@ironpulsefitness.example", "category": "Health & Fitness", "description": "Strength training, group classes and personal coaching.", "image": "assets/images/businesses/dumbells.jpg" },
-  { "id": 5, "name": "Sunrise Dental Care", "email": "info@sunrisedentalcare.example", "category": "Health & Medical", "description": "Friendly family dentistry with check-ups, whitening and braces.", "image": "assets/images/businesses/dentist.jpg" },
-  { "id": 6, "name": "The Daily Grind Café", "email": "info@thedailygrindcaf.example", "category": "Restaurants", "description": "Specialty coffee, fresh pastries and light breakfast and lunch.", "image": "assets/images/businesses/coffee.jpg" },
-  { "id": 7, "name": "Sharp Cuts Barbershop", "email": "info@sharpcutsbarbershop.example", "category": "Salons & Beauty", "description": "Classic cuts, fades and beard trims with walk-ins welcome.", "image": "assets/images/businesses/salon.jpg" },
-  { "id": 8, "name": "Spark Electrical Services", "email": "info@sparkelectricalservices.example", "category": "Home Services", "description": "Certified electricians for repairs, installations and compliance certificates.", "image": "assets/images/businesses/electrician-working.jpg" },
-  { "id": 9, "name": "PawPals Pet Grooming", "email": "info@pawpalspetgrooming.example", "category": "Pet Services", "description": "Gentle grooming, baths and nail trims for dogs and cats.", "image": "assets/images/businesses/dog.jpg" },
-  { "id": 10, "name": "Bright Minds Tutoring", "email": "info@brightmindstutoring.example", "category": "Education", "description": "After-school maths, science and English lessons for primary and high school learners.", "image": "assets/images/businesses/tutor.jpg" },
-  { "id": 11, "name": "Green Thumb Landscaping", "email": "info@greenthumblandscaping.example", "category": "Home Services", "description": "Garden design, lawn care and irrigation for homes and small businesses.", "image": "assets/images/businesses/garden.jpg" },
-  { "id": 12, "name": "Tyre Kings Auto Centre", "email": "info@tyrekingsautocentre.example", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyres.jpg" }
+  { "id": 1, "name": "Glow Nail Studio", "email": "info@glownailstudio.example", "hours": "Tue–Sat 09:00–18:00", "category": "Salons & Beauty", "description": "Hair, nails and skincare in a relaxed studio.", "image": "assets/images/businesses/nail-hygiene-care-flat-lay.jpg" },
+  { "id": 2, "name": "Quick Fix Garage", "email": "info@quickfixgarage.example", "hours": "Mon–Fri 07:30–17:00, Sat 08:00–13:00", "category": "Auto Services", "description": "Servicing, tyres and general car repairs.", "image": "assets/images/businesses/service.jpg" },
+  { "id": 3, "name": "Bella Rossa Cucina", "email": "info@bellarossacucina.example", "hours": "Tue–Sun 12:00–22:00", "category": "Restaurants", "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.", "image": "assets/images/businesses/restaurant.jpg" },
+  { "id": 4, "name": "Iron Pulse Fitness", "email": "info@ironpulsefitness.example", "hours": "Mon–Fri 05:00–21:00, Sat–Sun 07:00–15:00", "category": "Health & Fitness", "description": "Strength training, group classes and personal coaching.", "image": "assets/images/businesses/dumbells.jpg" },
+  { "id": 5, "name": "Sunrise Dental Care", "email": "info@sunrisedentalcare.example", "hours": "Mon–Fri 08:00–17:00, Sat 08:00–12:00", "category": "Health & Medical", "description": "Friendly family dentistry with check-ups, whitening and braces.", "image": "assets/images/businesses/dentist.jpg" },
+  { "id": 6, "name": "The Daily Grind Café", "email": "info@thedailygrindcaf.example", "hours": "Mon–Sat 06:30–16:00, Sun 07:30–14:00", "category": "Restaurants", "description": "Specialty coffee, fresh pastries and light breakfast and lunch.", "image": "assets/images/businesses/coffee.jpg" },
+  { "id": 7, "name": "Sharp Cuts Barbershop", "email": "info@sharpcutsbarbershop.example", "hours": "Mon–Sat 08:00–18:00", "category": "Salons & Beauty", "description": "Classic cuts, fades and beard trims with walk-ins welcome.", "image": "assets/images/businesses/salon.jpg" },
+  { "id": 8, "name": "Spark Electrical Services", "email": "info@sparkelectricalservices.example", "hours": "Mon–Fri 07:00–17:00", "category": "Home Services", "description": "Certified electricians for repairs, installations and compliance certificates.", "image": "assets/images/businesses/electrician-working.jpg" },
+  { "id": 9, "name": "PawPals Pet Grooming", "email": "info@pawpalspetgrooming.example", "hours": "Mon–Sat 08:00–17:00", "category": "Pet Services", "description": "Gentle grooming, baths and nail trims for dogs and cats.", "image": "assets/images/businesses/dog.jpg" },
+  { "id": 10, "name": "Bright Minds Tutoring", "email": "info@brightmindstutoring.example", "hours": "Mon–Thu 14:00–19:00, Sat 09:00–13:00", "category": "Education", "description": "After-school maths, science and English lessons for primary and high school learners.", "image": "assets/images/businesses/tutor.jpg" },
+  { "id": 11, "name": "Green Thumb Landscaping", "email": "info@greenthumblandscaping.example", "hours": "Mon–Fri 07:00–16:30", "category": "Home Services", "description": "Garden design, lawn care and irrigation for homes and small businesses.", "image": "assets/images/businesses/garden.jpg" },
+  { "id": 12, "name": "Tyre Kings Auto Centre", "email": "info@tyrekingsautocentre.example", "hours": "Mon–Fri 07:30–17:30, Sat 08:00–14:00", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyres.jpg" }
 ];
 
 // Returns a promise so loadBusinesses can `await` it now 
@@ -116,7 +116,15 @@ function createCard(b, index) {
   const category = document.createElement ("p"); //Create the p tag in memory
   category.textContent = b.category; //Set the p tag to the category
  
-  card.append (img, title, category);
+  const desc = document.createElement("div");   //a div (not p) so it doesn't pick up the category pill style
+  desc.className = "place-desc";
+  desc.textContent = b.description;
+
+  const hours = document.createElement("div");
+  hours.className = "place-hours";
+  hours.textContent = "Open: " + b.hours;
+
+  card.append (img, title, desc, hours, category);
   return card;
 }
 
@@ -210,6 +218,7 @@ function openBusiness(b) {
 document.getElementById("detail-name").textContent = b.name;  //Find the element with id "detail-name", set its text
 document.getElementById("detail-category").textContent = b.category;//Puts the category into the detail pages element
 document.getElementById("detail-desc").textContent = b.description;// Puts the business's description text into the detail page's description element
+document.getElementById("detail-hours").textContent = b.hours;//Puts the opening hours into the detail page
 detailImg.src = b.image;
 detailImg.alt = b.name;
 

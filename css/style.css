@@ -966,6 +966,34 @@ font-size: 12px;
   padding: 0 4px;
 }
 
+/* Short description under the business name, cut off after 3 lines */
+.place-desc {
+
+  padding: 0 4px;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+
+}
+
+/* Opening hours line on the card */
+.place-hours {
+
+  padding: 0 4px;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text);
+  opacity: .85;
+
+}
+
 /* Category shown as a small pill */
 .place-card p {
 
