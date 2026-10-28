@@ -55,13 +55,18 @@ document.querySelectorAll("[data-goto]").forEach(el  =>
  
 // Bottom nav: swap icon colour and highlight
 
+// Only Favourites, Bookings and Saved stay highlighted (they open a panel); Home, Search and Profile
+// take you elsewhere, so Home is the highlighted one afterwards
 document.querySelectorAll(".nav-btn").forEach( btn =>
 
   btn.addEventListener("click", () => {
 
+    const lit = ["heart", "ticket", "bookmark"].includes(btn.dataset.tab) ? btn : document.querySelector('.nav-btn[data-tab="home"]');
+
     document.querySelectorAll(".nav-btn").forEach(b  => {
-      const active = b  === btn;
+      const active = b  === lit;
       b.classList.toggle("active", active);
+      if (!b.dataset.icon) return;   //the search button keeps its own icon file
       b.querySelector("img").src =  `${ICON_PATH}${active ? "blue" : "grey"}/${b.dataset.icon}.svg`; //load the image for the nav based on its color
        });
      })
@@ -744,6 +749,17 @@ document.querySelectorAll(".nav-btn").forEach(btn =>
 
   })
 );
+
+// Nav Search: back to the business list with the search box ready to type in
+document.getElementById("nav-search").addEventListener("click", () => {
+  document.querySelector(".scroll").scrollTop = 0;
+  searchInput.focus();
+});
+
+// Nav Profile: same as the Profile button at the top of the home screen
+document.getElementById("nav-user").addEventListener("click", () => {
+  document.getElementById("profile-btn").click();
+});
 
 // Tap a card to open it; Reschedule and Cancel work on a booking
 sheetList.addEventListener("click", e => {

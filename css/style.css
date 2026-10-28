@@ -442,6 +442,14 @@ img
   }
 
  
+/* Keep every nav icon the same size and centred, whatever its SVG's own dimensions */
+.nav-btn .ico {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.nav-btn.active { background: var(--surface-2); }
+
 /* Page 3: User Details */
 .detail-hero 
 { 
