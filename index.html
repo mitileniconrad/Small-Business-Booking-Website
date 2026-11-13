@@ -184,7 +184,12 @@
           <img class="ico" src="assets/icons/grey/user.svg" alt="">
           <input type="text" id="profile-name-input" placeholder="Your name" maxlength="30" autocomplete="given-name" aria-label="Your name" required>
         </label>
-        <p class="field-error" id="profile-name-error" role="alert" hidden>Please enter your name to continue.</p>
+        <!--- Allows user to input their e-mail -->
+           <label class="email-field">
+          <img class="ico" src="assets/icons/grey/user.svg" alt="">
+          <input type="text" id="profile-email-input" placeholder="Your email" maxlength="60" autocomplete="given-email" aria-label="Your email" required>
+        </label>
+        <p class="field-error" id="profile-name-error" role="alert" hidden>Please enter your email to continue.</p>
         <button type="submit" class="btn-primary">Save changes</button>
       </form>
     </section>

@@ -266,7 +266,7 @@ function syncEmailButton(b) {
 function openEmailModal(b) {
   const name = getStoredName() || "";
   emailTo.textContent = "To: " + b.email;
-  emailBody.value = "Hi " + b.name + ",\n\nI would like to enquire more about your services and book a date\n\nKind regards,\n" + name;
+  emailBody.value = "Hi " + b.name + ",\n\nI would like to enquire more about your services and book a date\n\nKind regards,\n" + name + email;
   emailError.hidden = true;
   emailModal.hidden = false;
   emailBody.focus();
