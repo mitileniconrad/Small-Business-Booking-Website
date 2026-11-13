@@ -1,18 +1,18 @@
 // Business data: embedded so it works without a server (running locally)
 
 const BUSINESS_DATA = [
-  { "id": 1, "name": "Glow Nail Studio", "email": "info@glownailstudio.example", "hours": "Tue–Sat 09:00–18:00", "category": "Salons & Beauty", "description": "Hair, nails and skincare in a relaxed studio.", "image": "assets/images/businesses/nail-hygiene-care-flat-lay.jpg" },
-  { "id": 2, "name": "Quick Fix Garage", "email": "info@quickfixgarage.example", "hours": "Mon–Fri 07:30–17:00, Sat 08:00–13:00", "category": "Auto Services", "description": "Servicing, tyres and general car repairs.", "image": "assets/images/businesses/service.jpg" },
-  { "id": 3, "name": "Bella Rossa Cucina", "email": "info@bellarossacucina.example", "hours": "Tue–Sun 12:00–22:00", "category": "Restaurants", "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.", "image": "assets/images/businesses/restaurant.jpg" },
-  { "id": 4, "name": "Iron Pulse Fitness", "email": "info@ironpulsefitness.example", "hours": "Mon–Fri 05:00–21:00, Sat–Sun 07:00–15:00", "category": "Health & Fitness", "description": "Strength training, group classes and personal coaching.", "image": "assets/images/businesses/dumbells.jpg" },
-  { "id": 5, "name": "Sunrise Dental Care", "email": "info@sunrisedentalcare.example", "hours": "Mon–Fri 08:00–17:00, Sat 08:00–12:00", "category": "Health & Medical", "description": "Friendly family dentistry with check-ups, whitening and braces.", "image": "assets/images/businesses/dentist.jpg" },
-  { "id": 6, "name": "The Daily Grind Café", "email": "info@thedailygrindcaf.example", "hours": "Mon–Sat 06:30–16:00, Sun 07:30–14:00", "category": "Restaurants", "description": "Specialty coffee, fresh pastries and light breakfast and lunch.", "image": "assets/images/businesses/coffee.jpg" },
-  { "id": 7, "name": "Sharp Cuts Barbershop", "email": "info@sharpcutsbarbershop.example", "hours": "Mon–Sat 08:00–18:00", "category": "Salons & Beauty", "description": "Classic cuts, fades and beard trims with walk-ins welcome.", "image": "assets/images/businesses/salon.jpg" },
-  { "id": 8, "name": "Spark Electrical Services", "email": "info@sparkelectricalservices.example", "hours": "Mon–Fri 07:00–17:00", "category": "Home Services", "description": "Certified electricians for repairs, installations and compliance certificates.", "image": "assets/images/businesses/electrician-working.jpg" },
-  { "id": 9, "name": "PawPals Pet Grooming", "email": "info@pawpalspetgrooming.example", "hours": "Mon–Sat 08:00–17:00", "category": "Pet Services", "description": "Gentle grooming, baths and nail trims for dogs and cats.", "image": "assets/images/businesses/dog.jpg" },
-  { "id": 10, "name": "Bright Minds Tutoring", "email": "info@brightmindstutoring.example", "hours": "Mon–Thu 14:00–19:00, Sat 09:00–13:00", "category": "Education", "description": "After-school maths, science and English lessons for primary and high school learners.", "image": "assets/images/businesses/tutor.jpg" },
-  { "id": 11, "name": "Green Thumb Landscaping", "email": "info@greenthumblandscaping.example", "hours": "Mon–Fri 07:00–16:30", "category": "Home Services", "description": "Garden design, lawn care and irrigation for homes and small businesses.", "image": "assets/images/businesses/garden.jpg" },
-  { "id": 12, "name": "Tyre Kings Auto Centre", "email": "info@tyrekingsautocentre.example", "hours": "Mon–Fri 07:30–17:30, Sat 08:00–14:00", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyres.jpg" }
+  { "id": 1, "location": "Pretoria", "name": "Glow Nail Studio", "email": "info@glownailstudio.example", "hours": "Tue–Sat 09:00–18:00", "category": "Salons & Beauty", "description": "Hair, nails and skincare in a relaxed studio.", "image": "assets/images/businesses/nail-hygiene-care-flat-lay.jpg" },
+  { "id": 2, "location": "Benoni", "name": "Quick Fix Garage", "email": "info@quickfixgarage.example", "hours": "Mon–Fri 07:30–17:00, Sat 08:00–13:00", "category": "Auto Services", "description": "Servicing, tyres and general car repairs.", "image": "assets/images/businesses/service.jpg" },
+  { "id": 3, "location": "Johannesburg", "name": "Bella Rossa Cucina", "email": "info@bellarossacucina.example", "hours": "Tue–Sun 12:00–22:00", "category": "Restaurants", "description": "Family-run Italian kitchen with dine-in and takeaway based in Rosebank.", "image": "assets/images/businesses/restaurant.jpg" },
+  { "id": 4, "location": "Midrand", "name": "Iron Pulse Fitness", "email": "info@ironpulsefitness.example", "hours": "Mon–Fri 05:00–21:00, Sat–Sun 07:00–15:00", "category": "Health & Fitness", "description": "Strength training, group classes and personal coaching.", "image": "assets/images/businesses/dumbells.jpg" },
+  { "id": 5, "location": "Pretoria", "name": "Sunrise Dental Care", "email": "info@sunrisedentalcare.example", "hours": "Mon–Fri 08:00–17:00, Sat 08:00–12:00", "category": "Health & Medical", "description": "Friendly family dentistry with check-ups, whitening and braces.", "image": "assets/images/businesses/dentist.jpg" },
+  { "id": 6, "location": "Sandton", "name": "The Daily Grind Café", "email": "info@thedailygrindcaf.example", "hours": "Mon–Sat 06:30–16:00, Sun 07:30–14:00", "category": "Restaurants", "description": "Specialty coffee, fresh pastries and light breakfast and lunch.", "image": "assets/images/businesses/coffee.jpg" },
+  { "id": 7, "location": "Soweto", "name": "Sharp Cuts Barbershop", "email": "info@sharpcutsbarbershop.example", "hours": "Mon–Sat 08:00–18:00", "category": "Salons & Beauty", "description": "Classic cuts, fades and beard trims with walk-ins welcome.", "image": "assets/images/businesses/salon.jpg" },
+  { "id": 8, "location": "Krugersdorp", "name": "Spark Electrical Services", "email": "info@sparkelectricalservices.example", "hours": "Mon–Fri 07:00–17:00", "category": "Home Services", "description": "Certified electricians for repairs, installations and compliance certificates.", "image": "assets/images/businesses/electrician-working.jpg" },
+  { "id": 9, "location": "Alberton", "name": "PawPals Pet Grooming", "email": "info@pawpalspetgrooming.example", "hours": "Mon–Sat 08:00–17:00", "category": "Pet Services", "description": "Gentle grooming, baths and nail trims for dogs and cats.", "image": "assets/images/businesses/dog.jpg" },
+  { "id": 10, "location": "Vereeniging", "name": "Bright Minds Tutoring", "email": "info@brightmindstutoring.example", "hours": "Mon–Thu 14:00–19:00, Sat 09:00–13:00", "category": "Education", "description": "After-school maths, science and English lessons for primary and high school learners.", "image": "assets/images/businesses/tutor.jpg" },
+  { "id": 11, "location": "Bronkhorstspruit", "name": "Green Thumb Landscaping", "email": "info@greenthumblandscaping.example", "hours": "Mon–Fri 07:00–16:30", "category": "Home Services", "description": "Garden design, lawn care and irrigation for homes and small businesses.", "image": "assets/images/businesses/garden.jpg" },
+  { "id": 12, "location": "Cullinan", "name": "Tyre Kings Auto Centre", "email": "info@tyrekingsautocentre.example", "hours": "Mon–Fri 07:30–17:30, Sat 08:00–14:00", "category": "Auto Services", "description": "New and used tyres, wheel alignment and balancing while you wait.", "image": "assets/images/businesses/tyres.jpg" }
 ];
 
 // Returns a promise so loadBusinesses can `await` it now 
@@ -129,27 +129,39 @@ function createCard(b, index) {
   hours.className = "place-hours";
   hours.textContent = "Open: " + b.hours;
 
-  card.append (img, title, desc, hours, category);
+  const where = document.createElement("div");
+  where.className = "place-loc";
+  where.textContent = b.location;
+
+  card.append (img, title, where, desc, hours, category);
   return card;
 }
 
 
  //funtion to load all the businesses 
 
+// The area picked on the map ("" when the user chose to see all areas)
+function activeLocation() {
+  const l = getStoredLocation();
+  return l && l !== LOCATION_SKIPPED ? l : "";
+}
+
 function renderBusinesses() {
 
   const q =  query.trim().toLowerCase();
+  const loc = activeLocation();   //only businesses in this area are shown
   let shown = 0;
 
   //show or hide the cards that already exist instead of rebuilding every card and picture
   businesses.forEach(b => {
-    const match = (activeCategory === "All"  || b.category ===  activeCategory) &&
+    const match = (!loc || b.location === loc) &&
+      (activeCategory === "All"  || b.category ===  activeCategory) &&
       (!q || [b.name, b.category, b.description].some(v => v.toLowerCase ().includes(q)));
     cardEls.get(b.id).hidden = !match;
     if (match) shown++;
   });
  
-  setStatus(shown ? "" : "No businesses found.");
+  setStatus(shown ? "" : (loc ? "No businesses found in " + loc + "." : "No businesses found."));
 
 }
  
@@ -432,18 +444,18 @@ let modalOpener = null;   //the button that opened it, so focus can go back ther
 let calMonth = { y: 0, m: 0 };   //month on show (m is 0-11)
 let selectedDate = "";           //"YYYY-MM-DD", or "" until a day is picked
 
-function openBookingModal(b, booking = null) {
-  modalState = { business: b, booking };
+function openBookingModal(b, booking = null, pick = false) {
+  modalState = { business: b, booking, pick };
   modalOpener = document.activeElement;
 
-  selectedDate = booking ? booking.date : "";
+  selectedDate = booking ? booking.date : (pick ? pendingDate : "");
   const [y, m] = (selectedDate || todayYMD()).split("-").map(Number);
   calMonth = { y, m: m - 1 };   //start on the booking's month, or this month
 
-  modalTitle.textContent = booking ? "Reschedule booking" : "Book " + b.name;
-  confirmBtn.textContent = booking ? "Save date" : "Send";
+  modalTitle.textContent = booking ? "Reschedule booking" : (pick ? "Choose a date" : "Book " + b.name);
+  confirmBtn.textContent = booking || pick ? "Save date" : "Send";
   bookingEmailCheck.checked = false;
-  bookingEmailRow.hidden = !!booking || !b.email;   //email option only when making a new booking
+  bookingEmailRow.hidden = !!booking || pick || !b.email;   //email option only when making a new booking
   bookingError.hidden = true;
 
   renderCalendar();
@@ -568,6 +580,14 @@ bookingForm.addEventListener("submit", e => {
   if (!date) return showBookingError("Please pick a date to continue.");
   if (date < todayYMD()) return showBookingError("Please choose today or a future date.");
 
+  //pick mode: just hand the date back to the booking page
+  if (modalState.pick) {
+    pendingDate = date;
+    closeBookingModal();
+    syncBookingPage();
+    return;
+  }
+
   const { business, booking } = modalState;
   if (booking && booking.date === date) return closeBookingModal();   //nothing changed
   if (isDateTaken(business.id, date, booking ? booking.id : null)) return showBookingError(ALREADY_BOOKED);
@@ -603,9 +623,150 @@ document.addEventListener("keydown", e => {
   if (e.key === "Escape" && !modalEl.hidden) closeBookingModal();
 });
 
+// Booking page: pick a date and a package, then confirm (prices are placeholder demo values)
+const PACKAGES = [
+  { name: "Standard", note: "Basic appointment", price: 250 },
+  { name: "Premium", note: "Extended time and extras", price: 450 },
+  { name: "Deluxe", note: "Full service with a priority slot", price: 750 }
+];
+let pendingDate = "";      //date chosen on the booking page ("YYYY-MM-DD" or "")
+let pendingPackage = 0;    //index into PACKAGES
+
+const bkImg = document.getElementById("bk-img");
+const bkName = document.getElementById("bk-name");
+const bkCategory = document.getElementById("bk-category");
+const bkDateText = document.getElementById("bk-date-text");
+const bkPackages = document.getElementById("bk-packages");
+const bkTotal = document.getElementById("bk-total");
+const bkError = document.getElementById("bk-error");
+const bkEmailRow = document.getElementById("bk-email-row");
+const bkEmailCheck = document.getElementById("bk-email-check");
+
+const confirmModal = document.getElementById("confirm-modal");
+
+function money(n) { return "R" + n.toLocaleString("en-ZA"); }
+
+function renderPackages() {
+  bkPackages.replaceChildren(...PACKAGES.map((p, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "pkg" + (i === pendingPackage ? " selected" : "");
+    btn.setAttribute("role", "radio");
+    btn.setAttribute("aria-checked", String(i === pendingPackage));
+    btn.dataset.index = i;
+
+    const info = document.createElement("div");
+    info.className = "pkg-info";
+    const title = document.createElement("strong");
+    title.textContent = p.name;
+    const note = document.createElement("span");
+    note.textContent = p.note;
+    info.append(title, note);
+
+    const price = document.createElement("span");
+    price.className = "pkg-price";
+    price.textContent = money(p.price);
+
+    const radio = document.createElement("span");
+    radio.className = "pkg-radio";
+    radio.setAttribute("aria-hidden", "true");
+
+    btn.append(info, price, radio);
+    return btn;
+  }));
+}
+
+function syncBookingPage() {
+  bkDateText.textContent = pendingDate ? formatDate(pendingDate) : "Pick a date";
+  bkTotal.textContent = money(PACKAGES[pendingPackage].price);
+}
+
+function openBookingPage(b) {
+  pendingDate = "";
+  pendingPackage = 0;
+  bkEmailCheck.checked = false;
+  bkError.hidden = true;
+  bkImg.src = b.image;
+  bkImg.alt = b.name;
+  bkName.textContent = b.name;
+  bkCategory.textContent = b.category;
+  bkEmailRow.hidden = !b.email;
+  renderPackages();
+  syncBookingPage();
+  show("screen-booking");
+}
+
 document.getElementById("book-btn").addEventListener("click", () => {
-  if (currentBusiness) openBookingModal(currentBusiness);
+  if (currentBusiness) openBookingPage(currentBusiness);
 });
+
+document.getElementById("bk-back").addEventListener("click", () => show("screen-detail"));
+
+document.getElementById("bk-date-btn").addEventListener("click", () => {
+  if (currentBusiness) openBookingModal(currentBusiness, null, true);
+});
+
+bkPackages.addEventListener("click", e => {
+  const btn = e.target.closest(".pkg");
+  if (!btn) return;
+  pendingPackage = Number(btn.dataset.index);
+  renderPackages();
+  syncBookingPage();
+});
+
+document.getElementById("bk-confirm").addEventListener("click", () => {
+  if (!currentBusiness) return;
+  if (!pendingDate) {
+    bkError.textContent = "Please pick a date to continue.";
+    bkError.hidden = false;
+    return;
+  }
+  if (isDateTaken(currentBusiness.id, pendingDate, null)) {
+    bkError.textContent = ALREADY_BOOKED;
+    bkError.hidden = false;
+    return;
+  }
+  bkError.hidden = true;
+
+  const b = currentBusiness;
+  const pkg = PACKAGES[pendingPackage];
+
+  saveBookings([...getBookings(), {
+    id: Date.now() + "-" + Math.random().toString(36).slice(2, 8),
+    businessId: b.id,
+    businessName: b.name,
+    customerName: getStoredName() || "",
+    date: pendingDate,
+    packageName: pkg.name,
+    price: pkg.price,
+    createdAt: new Date().toISOString()
+  }]);
+
+  //fill in and open the Booking Confirmed modal
+  document.getElementById("confirm-text").textContent = "Your booking at " + b.name + " is all set.";
+  document.getElementById("confirm-img").src = b.image;
+  document.getElementById("confirm-img").alt = b.name;
+  document.getElementById("confirm-name").textContent = b.name;
+  document.getElementById("confirm-category").textContent = b.category;
+  document.getElementById("confirm-date").textContent = formatDate(pendingDate);
+  document.getElementById("confirm-package").textContent = pkg.name;
+  document.getElementById("confirm-total").textContent = money(pkg.price);
+  confirmModal.hidden = false;
+  document.getElementById("confirm-view").focus();
+
+  //demo: the email option only changes the message, nothing is actually emailed
+  if (bkEmailCheck.checked && b.email) toast("Email sent to " + b.email);
+  renderSheet();
+});
+
+// View Trip Details: close the modal and open the Bookings tab
+function closeConfirm() {
+  confirmModal.hidden = true;
+  show("screen-home");
+  document.querySelector('.nav-btn[data-tab="ticket"]').click();
+}
+document.getElementById("confirm-view").addEventListener("click", closeConfirm);
+confirmModal.addEventListener("click", e => { if (e.target === confirmModal) closeConfirm(); });
 
 // Bottom nav tabs: Favourites, Bookings and Saved open a panel over the home list
 const sheetEl = document.getElementById("sheet");
@@ -646,7 +807,7 @@ function createBookingRow(booking, b) {
   const date = document.createElement("p");
 
   date.className = "booking-date";
-  date.textContent = "Booked for " + formatDate(booking.date);
+  date.textContent = "Booked for " + formatDate(booking.date) + (booking.packageName ? " · " + booking.packageName : "");
 
   info.append(title, pill, date);
 
@@ -839,6 +1000,123 @@ nameForm.addEventListener("submit", e => {
  
 nameInput.addEventListener("input", () => (nameError.hidden = true));
  
+// Select location page: tap a pin on the map, or skip. Saved in localStorage.
+const LOCATION_KEY = "bookingLocation";
+const LOCATION_SKIPPED = "__skipped__";
+
+const MAP_PINS = [
+  { name: "Pretoria",          x: 52.8, y: 38.4 },
+  { name: "Cullinan",          x: 63.2, y: 35.6 },
+  { name: "Bronkhorstspruit",  x: 71.1, y: 40.7 },
+  { name: "Midrand",           x: 49.1, y: 48.0 },
+  { name: "Sandton",           x: 46.7, y: 52.2 },
+  { name: "Krugersdorp",       x: 36.5, y: 51.3 },
+  { name: "Johannesburg",      x: 46.3, y: 55.9 },
+  { name: "Soweto",            x: 39.6, y: 58.3 },
+  { name: "Benoni",            x: 56.1, y: 55.3 },
+  { name: "Alberton",          x: 49.0, y: 58.3 },
+  { name: "Vereeniging",       x: 42.0, y: 73.9 }
+];
+const locCities = document.getElementById("loc-cities");   //row of city buttons under the map
+
+const mapEl = document.getElementById("map");
+const locChosen = document.getElementById("loc-chosen");
+const locContinue = document.getElementById("loc-continue");
+const homeLocationBtn = document.getElementById("home-location");
+
+let pickedLocation = "";            //pin currently selected on the map
+let locationNext = "screen-home";    //where Continue / Skip lead to
+
+// null = never answered, LOCATION_SKIPPED = skipped, otherwise the area name
+function getStoredLocation() {
+  try { return localStorage.getItem(LOCATION_KEY); } catch { return null; }
+}
+
+function storeLocation(value) {
+  try { localStorage.setItem(LOCATION_KEY, value); } catch { /* storage blocked */ }
+}
+
+function renderLocation() {
+  const loc = getStoredLocation();
+  homeLocationBtn.textContent = loc && loc !== LOCATION_SKIPPED ? "Location: " + loc + " (change)" : "Showing all areas (set your location)";
+  renderBusinesses();   //filter the business list to the chosen area
+}
+
+function selectPin(name) {
+  pickedLocation = name;
+  mapEl.querySelectorAll(".map-pin").forEach(p => {
+    const on = p.dataset.name === name;
+    p.classList.toggle("selected", on);
+    p.setAttribute("aria-pressed", String(on));
+  });
+  locCities.querySelectorAll(".chip").forEach(c => {
+    const on = c.dataset.name === name;
+    c.classList.toggle("active", on);
+    c.setAttribute("aria-pressed", String(on));
+    if (on) c.scrollIntoView({ inline: "center", block: "nearest" });
+  });
+  locChosen.textContent = name ? "Selected: " + name : "No location selected";
+  locContinue.disabled = !name;
+}
+
+MAP_PINS.forEach(pin => {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "map-pin";
+  btn.dataset.name = pin.name;
+  btn.style.left = pin.x + "%";
+  btn.style.top = pin.y + "%";
+  btn.setAttribute("aria-pressed", "false");
+  btn.setAttribute("aria-label", pin.name);
+
+  const dot = document.createElement("span");
+  dot.className = "dot";
+  const label = document.createElement("span");
+  label.className = "tag-label";
+  label.textContent = pin.name;
+
+  btn.append(dot, label);
+  btn.addEventListener("click", () => selectPin(pin.name));
+  mapEl.append(btn);
+
+  const chip = document.createElement("button");
+  chip.type = "button";
+  chip.className = "chip";
+  chip.dataset.name = pin.name;
+  chip.textContent = pin.name;
+  chip.setAttribute("aria-pressed", "false");
+  chip.addEventListener("click", () => selectPin(pin.name));
+  locCities.append(chip);
+});
+
+function openLocation(next) {
+  locationNext = next;
+  const current = getStoredLocation();
+  selectPin(current && current !== LOCATION_SKIPPED ? current : "");
+  show("screen-location");
+}
+
+locContinue.addEventListener("click", () => {
+  if (!pickedLocation) return;
+  storeLocation(pickedLocation);
+  renderLocation();
+  toast("Location set to " + pickedLocation);
+  show(locationNext);
+});
+
+document.getElementById("loc-skip").addEventListener("click", () => {
+  storeLocation(LOCATION_SKIPPED);   //show all areas (also clears an earlier choice)
+  renderLocation();
+  show(locationNext);
+});
+
+homeLocationBtn.addEventListener("click", () => openLocation("screen-home"));
+
+// Welcome page -> Get Started: ask for a location first (once), then the businesses
+document.getElementById("get-started").addEventListener("click", () => {
+  openLocation("screen-home");   //always show the map and select location page after Get Started
+});
+
 // Profile page: opened from the user icon on the home screen, lets the user change their name
 const profileForm = document.getElementById("profile-form");
 const profileInput = document.getElementById("profile-name-input");
@@ -875,6 +1153,7 @@ const savedName = getStoredName();
 if (savedName) {
 
   renderName(savedName);
+  renderLocation();
   show("screen-welcome");
 
 }

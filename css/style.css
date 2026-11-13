@@ -69,7 +69,7 @@ img
 .Page-One {
 
   position: relative;
-  width: 390px;
+  width: min(600px, calc(100vw - 8px)); /* much wider than the old fixed 390px, but never wider than the screen */
   height: min(844px, 100vh);
   height: min(844px, 100dvh); /* dvh = real visible height on phones, so the page can scroll to the end */
   background: var(--bg);
@@ -442,6 +442,80 @@ img
   }
 
  
+/* ---------- Select location page ---------- */
+.loc-wrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 22px 22px;
+}
+.loc-wrap h1 { font-size: 30px; line-height: 1.15; font-weight: 700; }
+.loc-wrap > p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+.map {
+  position: relative;
+  flex: 1;
+  min-height: 160px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--surface-2);
+}
+.map-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.map-pin .dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff6b6b;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px #0009;
+  transition: transform .15s, background .15s;
+}
+.map-pin .tag-label {
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #0d0f13cc;
+}
+.map-pin:hover .dot { transform: scale(1.15); }
+.map-pin.selected .dot { background: var(--accent); transform: scale(1.45); }
+.map-pin.selected .tag-label { background: var(--accent); }
+.map-pin.selected { z-index: 2; }
+
+.loc-chosen { font-size: 14px; font-weight: 600; text-align: center; }
+.btn-skip {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.btn-skip:hover { color: var(--text); }
+.btn-primary:disabled { opacity: .45; cursor: not-allowed; filter: none; }
+
+.home-location { margin: -8px 0 16px; }
+
 /* Keep every nav icon the same size and centred, whatever its SVG's own dimensions */
 .nav-btn .ico {
   width: 24px;
@@ -1259,7 +1333,7 @@ font-size: 12px;
 
 @media (min-width: 900px) {
 
-  .sheet { padding: 48px 56px 24px; }
+  .sheet { padding: 28px 26px 24px; }
 
 }
 
@@ -1423,4 +1497,351 @@ font-size: 12px;
 }
 .cal-btn-quiet:hover {
   color: var(--text);
+}
+
+
+/* ---------- Mobile: wider layout (added) ---------- */
+/* On phones the page already fills the screen, so the extra width comes from trimming the side gaps and letting content use more of it */
+@media (max-width: 500px) {
+
+  .scroll, .sheet {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .name-form {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .welcome-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .detail-body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .loc-wrap {
+    max-width: none;            /* the location page uses the full phone width */
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .cards {
+    gap: 8px;                   /* a tighter gap gives each business card more room */
+  }
+
+  .place-card {
+    padding: 8px;               /* less padding inside each card so the photo and text get more width */
+  }
+
+  .bottom-nav {
+    margin: 0 4px 8px;          /* nav bar stretches almost edge to edge */
+  }
+
+  .hero-actions {
+    left: 10px;
+    right: 10px;
+  }
+
+  .profile-back {
+    left: 10px;
+  }
+
+  .modal {
+    padding: 8px;
+  }
+
+  .modal-card {
+    width: 100%;                /* booking calendar uses the full width available */
+  }
+
+}
+
+
+/* ---------- Page 4b: Select date and package (added) ---------- */
+#screen-booking .scroll > * {
+  max-width: 560px;
+}
+.bk-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.bk-head h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+.bk-biz {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 22px;
+}
+.bk-biz img {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--surface-2);
+  border-radius: 14px;
+}
+.bk-biz h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.bk-biz .tag {
+  margin-top: 6px;
+}
+.bk-label {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.bk-date {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  transition: background .15s;
+}
+.bk-date:hover {
+  background: var(--surface-2);
+}
+.bk-date small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+.bk-date strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+.pkg-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.pkg {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: var(--surface);
+  border: 2px solid transparent;
+  border-radius: 18px;
+  padding: 14px;
+  transition: background .15s, border-color .15s;
+}
+.pkg:hover {
+  background: var(--surface-2);
+}
+.pkg.selected {
+  border-color: var(--accent);
+}
+.pkg-info {
+  flex: 1;
+  min-width: 0;
+}
+.pkg-info strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+.pkg-info span {
+  font-size: 13px;
+  color: var(--muted);
+}
+.pkg-price {
+  font-size: 16px;
+  font-weight: 700;
+}
+.pkg-radio {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--muted);
+}
+.pkg.selected .pkg-radio {
+  border-color: var(--accent);
+  background: radial-gradient(var(--accent) 45%, transparent 50%);
+}
+.bk-footer {
+  flex-shrink: 0;
+  display: grid;
+  gap: 10px;
+  padding: 12px 22px 20px;
+  background: var(--bg);
+  border-top: 1px solid var(--surface-2);
+}
+.bk-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+.bk-total strong {
+  font-size: 20px;
+}
+@media (min-width: 600px) {
+  .bk-footer { padding: 14px 40px 24px; }
+  .bk-footer .btn-primary { max-width: 420px; }
+}
+@media (min-width: 900px) {
+  .bk-footer { padding: 14px 56px 24px; }
+}
+@media (max-width: 500px) {
+  .bk-footer { padding: 10px 10px 12px; }
+}
+
+/* ---------- Booking confirmed modal (added) ---------- */
+.confirm-card {
+  text-align: center;
+  align-items: stretch;
+}
+.confirm-check {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 8px #1e88ff26;
+}
+.confirm-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: var(--surface-2);
+  border-radius: 16px;
+  padding: 10px;
+}
+.confirm-summary img {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--surface);
+}
+.confirm-summary h4 {
+  font-size: 15px;
+  font-weight: 600;
+}
+.modal-card .confirm-summary p {
+  font-size: 13px;
+  margin-top: 2px;
+}
+.confirm-rows {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+.confirm-rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.confirm-rows dt {
+  color: var(--muted);
+}
+.confirm-rows dd {
+  font-weight: 600;
+  text-align: right;
+}
+.confirm-total {
+  padding-top: 10px;
+  border-top: 1px solid var(--surface-2);
+}
+.confirm-total dd {
+  font-size: 18px;
+}
+
+
+/* ---------- Gauteng map: pins sit on the picture, businesses filter by area (added) ---------- */
+.loc-wrap {
+  overflow-y: auto;
+}
+.map {
+  flex: none;
+  aspect-ratio: 606 / 540;   /* same shape as the map picture, so the pins line up with the towns */
+  min-height: 0;
+}
+.map-img {
+  object-fit: fill;
+}
+.map-pin::before {
+  content: "";
+  position: absolute;
+  inset: -10px;              /* bigger tap area around the small dot */
+}
+.map-pin .dot {
+  width: 14px;
+  height: 14px;
+  border-width: 2px;
+}
+/* The town names are already printed on the map, so a pin only shows its name when picked or hovered */
+.map-pin .tag-label {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 4px;
+  z-index: 3;
+}
+.map-pin.selected .tag-label,
+.map-pin:hover .tag-label,
+.map-pin:focus-visible .tag-label {
+  display: block;
+}
+
+/* Area shown on each business card */
+.place-loc {
+  padding: 0 4px;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+/* ---------- City buttons under the Gauteng map (added) ---------- */
+.loc-cities {
+  flex: none;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface);
+}
+.loc-cities .chip {
+  padding: 9px 14px;
+  font-size: 13px;
+}
+.map {
+  background: #e6dfc6;       /* matches the edge colour of the drawn map */
+}
+
+
+/* ---------- Gauteng map: new picture is 619 x 640 (added) ---------- */
+.map {
+  aspect-ratio: 619 / 640;   /* same shape as the map picture so the pins stay on their cities */
+  width: min(100%, 420px);
+  margin: 0 auto;
 }
