@@ -261,10 +261,12 @@ function syncEmailButton(b) {
   emailBtn.hidden = !b.email;
 }
 
+
+///Email booking function template 
 function openEmailModal(b) {
   const name = getStoredName() || "";
   emailTo.textContent = "To: " + b.email;
-  emailBody.value = "Hi " + b.name + ",\n\nI found you on Open Book and would like to ask about your services.\n\nKind regards,\n" + name;
+  emailBody.value = "Hi " + b.name + ",\n\nI would like to enquire more about your services and book a date\n\nKind regards,\n" + name;
   emailError.hidden = true;
   emailModal.hidden = false;
   emailBody.focus();
@@ -755,11 +757,13 @@ document.getElementById("bk-confirm").addEventListener("click", () => {
   document.getElementById("confirm-view").focus();
 
   //demo: the email option only changes the message, nothing is actually emailed
+
   if (bkEmailCheck.checked && b.email) toast("Email sent to " + b.email);
   renderSheet();
 });
 
-// View Trip Details: close the modal and open the Bookings tab
+// View Booking Details: close the modal and open the Bookings tab
+
 function closeConfirm() {
   confirmModal.hidden = true;
   show("screen-home");
