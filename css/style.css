@@ -1773,7 +1773,8 @@ font-size: 12px;
 }
 
 
-/* ---------- Gauteng map: pins sit on the picture, businesses filter by area (added) ---------- */
+/* ---- Gauteng map: pins sit on the picture, businesses filter by area (added) ----- */
+
 .loc-wrap {
   overflow-y: auto;
 }
@@ -1788,14 +1789,15 @@ font-size: 12px;
 .map-pin::before {
   content: "";
   position: absolute;
-  inset: -10px;              /* bigger tap area around the small dot */
+  inset: -10px;              /* bigger tap area around the small dot so  the user does not click wrong area in the cluster*/
 }
 .map-pin .dot {
   width: 14px;
   height: 14px;
   border-width: 2px;
 }
-/* The town names are already printed on the map, so a pin only shows its name when picked or hovered */
+/* The town names are already printed on the map, the pin only shows its name when picked or hovered */
+
 .map-pin .tag-label {
   display: none;
   position: absolute;
@@ -1820,7 +1822,8 @@ font-size: 12px;
 }
 
 
-/* ---------- City buttons under the Gauteng map (added) ---------- */
+/* -- City buttons under the Gauteng map -- */
+
 .loc-cities {
   flex: none;
   display: flex;
@@ -1839,9 +1842,52 @@ font-size: 12px;
 }
 
 
-/* ---------- Gauteng map: new picture is 619 x 640 (added) ---------- */
+/* -- Gauteng map: new picture is 619 x 640 (added) -- */
 .map {
   aspect-ratio: 619 / 640;   /* same shape as the map picture so the pins stay on their cities */
   width: min(100%, 420px);
   margin: 0 auto;
 }
+
+
+/* ---- Location row + Clear filter ---- */
+.loc-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  margin: -8px 0 16px;
+}
+.link-btn[hidden] { display: none; }
+.home-clear { color: #ff6b6b; }
+.home-clear:hover { text-decoration: underline; }
+
+/* ---- Profile email field (matches the name field) ---- */
+.email-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid transparent;
+  color: var(--muted);
+  transition: border-color .15s;
+}
+.email-field:focus-within { border-color: var(--accent); color: var(--text); }
+.email-field input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+}
+.email-field input::placeholder { color: var(--muted); }
+.email-field input:focus-visible { outline: none; }   /* the wrapper shows the focus ring */
+.email-field:has(input:not(:placeholder-shown):invalid) { border-color: #f90101; }
+
+/* ---- Email modal "Reply-to" line ---- */
+.modal-card .email-from { font-size: 13px; }
+.modal-card .email-from.warn { color: #ffb347; }
