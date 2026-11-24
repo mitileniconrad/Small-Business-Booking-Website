@@ -1964,3 +1964,55 @@ font-size: 12px;
   font-size: 15px;
   font-weight: 700;
 }
+
+/* ---- Location picker: hide the vertical scroll bar (still scrolls) ---- */
+.loc-wrap {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* old Edge */
+}
+.loc-wrap::-webkit-scrollbar {
+  display: none;                /* Chrome, Edge, Safari */
+}
+
+
+
+/* ---- Location picker: everything fits on one screen ---- */
+.loc-wrap {
+  gap: 8px;
+  padding: 16px 14px 14px;
+  overflow-y: auto;              /* only kicks in on extremely short screens */
+}
+.loc-wrap h1 { font-size: 24px; }
+.loc-wrap > p { font-size: 13px; line-height: 1.4; }
+
+/* The map takes whatever height is left, and keeps its shape */
+.map-area {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;          /* lets the map measure this box */
+}
+.map {
+  flex: none;
+  margin: 0;
+  aspect-ratio: 619 / 640;
+  width: min(100cqw, calc(100cqh * 619 / 640));   /* biggest size that fits both ways */
+}
+
+/* Smaller city tags so they take up less height */
+.loc-cities {
+  gap: 6px;
+}
+.loc-cities .chip {
+  padding: 6px 11px;
+  font-size: 12px;
+}
+
+.loc-chosen { font-size: 13px; }
+.loc-actions .btn-primary,
+.loc-actions .btn-skip {
+  padding: 13px 10px;
+  font-size: 15px;
+}
