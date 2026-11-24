@@ -1891,3 +1891,76 @@ font-size: 12px;
 /* ---- Email modal "Reply-to" line ---- */
 .modal-card .email-from { font-size: 13px; }
 .modal-card .email-from.warn { color: #ffb347; }
+
+
+
+/* ---- Location page: city tags wrap instead of scrolling off the edge ---- */
+.loc-cities {
+  flex-wrap: wrap;
+  overflow-x: visible;
+  justify-content: center;
+  padding-bottom: 0;
+}
+.loc-cities .chip {
+  flex: 0 0 auto;
+}
+
+/* ---- Continue + Skip side by side ---- */
+.loc-actions {
+  flex: none;
+  display: flex;
+  gap: 10px;
+}
+.loc-actions .btn-primary {
+  flex: 2;
+  width: auto;
+}
+.loc-actions .btn-skip {
+  flex: 1;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 17px 10px;
+  font-size: 16px;
+}
+.loc-actions .btn-skip:hover {
+  background: var(--surface);
+}
+
+/* ---- Business card location: green and bigger ---- */
+
+.place-loc {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3ddc84;
+  margin-top: 4px;
+}
+@media (min-width: 600px) {
+  .place-loc { font-size: 16px; }
+}
+
+/* ---- Profile pill (top of home) ---- */
+
+
+.profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px 5px 5px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .15s;
+}
+.profile-pill:hover { background: var(--surface); }
+.profile-pill-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 700;
+}

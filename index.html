@@ -38,11 +38,12 @@
 
         <div class="loc-cities" id="loc-cities" aria-label="Cities"></div>
 
-        <p class="loc-chosen" id="loc-chosen" role="status">No location selected</p>
+      <p class="loc-chosen" id="loc-chosen" role="status">No location selected</p>
 
-        <button type="button" class="btn-primary" id="loc-continue" disabled>Continue</button>
-        <button type="button" class="btn-skip" id="loc-skip">Show all areas</button>
-      </div>
+       <div class="loc-actions">
+       <button type="button" class="btn-primary" id="loc-continue" disabled>Continue</button>
+      <button type="button" class="btn-skip" id="loc-skip">Skip</button>
+  </div>
     </section>
 
     <!-- Page 2: Welcome -->
@@ -61,10 +62,15 @@
     <section class="screen" id="screen-home" aria-label="Home">
       <div class="home-main">
       <div class="scroll">
-        <header class="top-bar">
-          <button class="icon-btn" id="profile-btn" aria-label="Profile"><img class="ico" src="assets/icons/white/user.svg" alt="">Profile</button>
-          <button class="icon-btn" aria-label="Search"><img class="ico" src="assets/icons/white/search.svg" alt=""></button>
-        </header>
+      <header class="top-bar">
+      <button class="profile-pill" id="profile-btn" aria-label="Profile">
+       <span class="profile-pill-avatar user-initial" aria-hidden="true"></span>
+       <span>Profile</span>
+     </button>
+      <button class="icon-btn" id="top-search" aria-label="Search"><img class="ico" src="assets/icons/white/search.svg" alt=""></button>
+    </header>
+    
+    <label class="search" id="search-bar"></label>
 
         <h2 class="greeting">Hey, <span class="user-name"></span>! What are you looking for?</h2>
     <div class="loc-row">
