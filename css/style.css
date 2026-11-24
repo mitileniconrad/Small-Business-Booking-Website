@@ -2016,3 +2016,21 @@ font-size: 12px;
   padding: 13px 10px;
   font-size: 15px;
 }
+
+/* ---- Inputs: rounded blue focus ring that follows the box ---- */
+.name-field,
+.search {
+  border: 3px solid transparent;
+  border-radius: 16px;
+  transition: border-color .15s;
+}
+.name-field:focus-within,
+.search:focus-within {
+  border-color: var(--accent);
+}
+
+/* Remove the square outline on the inner input (the box shows the ring instead) */
+.name-field input:focus-visible,
+.search input:focus-visible {
+  outline: none;
+}
