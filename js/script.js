@@ -790,7 +790,7 @@ const sheetClear = document.getElementById("sheet-clear");
 
 const SHEETS = {
   heart: { title: "Favourites", key: FAV_KEY, empty: "No favourites yet. Tap the heart on a business to add it here.", clearLabel: "Clear favourites", clearToast: "Favourites cleared" },
-  ticket: { title: "Bookings", empty: "No bookings yet. Open a business and tap Book Now.", clearLabel: "Clear bookings", clearToast: "All bookings cleared" },
+  ticket: { title: "Bookings", empty: "No bookings yet. Open a business and tap Book Now.", clearLabel: "Clear ALL bookings", clearToast: "All bookings cleared" },
   bookmark: { title: "Saved", key: SAVED_KEY, empty: "Nothing saved yet. Tap the bookmark on a business to keep it here.", clearLabel: "Clear saved", clearToast: "Saved list cleared" }
 };
 let activeTab = null;   //null = panel closed (Home tab)

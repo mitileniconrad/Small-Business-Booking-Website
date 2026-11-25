@@ -1713,6 +1713,20 @@ font-size: 12px;
 }
 
 
+.confirm-check {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  border-radius: 50%;
+
+  color: var(--text);
+  display: grid;
+  place-items: center;
+
+}
+
+
+
 
 .confirm-summary {
   display: flex;
@@ -1724,8 +1738,8 @@ font-size: 12px;
   padding: 10px;
 }
 .confirm-summary img {
-  width: 64px;
-  height: 64px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 12px;
