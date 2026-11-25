@@ -16,7 +16,7 @@
     <section class="screen" id="screen-name" aria-label="Enter your name">
       <form class="name-form" id="name-form" novalidate>
         <h1>What should we call you?</h1>
-        <p>Enter your name so we can personalise your bookings.</p>
+        <p>Enter your name so we can personalise your expirience.</p>
         <label class="name-field">
           <img class="ico" src="assets/icons/grey/user.svg" alt="">
           <input type="text" id="name-input" placeholder="Your name" maxlength="30" autocomplete="given-name" required>
@@ -41,11 +41,12 @@
         <div class="loc-cities" id="loc-cities" aria-label="Cities"></div>
 
       <p class="loc-chosen" id="loc-chosen" role="status">No location selected</p>
-
-       <div class="loc-actions">
-       <button type="button" class="btn-primary" id="loc-continue" disabled>Continue</button>
-      <button type="button" class="btn-skip" id="loc-skip">Skip</button>
-  </div>
+      <div class="loc-actions">
+        <button type="button" class="btn-primary" id="loc-continue" disabled>Continue</button>
+        <button type="button" class="btn-skip" id="loc-skip">Skip</button>
+      </div>
+    </div>   <!-- closes loc-wrap -->
+  </section>
 
 
 
@@ -274,6 +275,10 @@
       <form class="modal-card" id="email-form" novalidate>
         <h3 id="email-modal-title">Email business</h3>
         <p id="email-to"></p>
+
+<p class="email-from" id="email-from"></p>
+
+
         <textarea id="email-body" class="email-body" rows="7" aria-label="Message"></textarea>
         <p class="field-error" id="email-error" role="alert" hidden>Please type a message first.</p>
         <div class="cal-actions">

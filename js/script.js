@@ -23,7 +23,8 @@ function getBusinesses() {
 }
 
 
-//Getting the classes and loading all the icons
+
+const emailFrom = document.getElementById("email-from");
 
 const screens = document.querySelectorAll(".screen");
 const toastEl = document.getElementById("toast");
@@ -1237,4 +1238,9 @@ if (savedName) {
   nameInput.focus();
 }
  
+
+
+
+
 loadBusinesses();
+
